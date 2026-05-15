@@ -1,0 +1,305 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Anti-Phishing Detection",
+    "description": "FishFish is an automated service designed to quickly detect and mitigate phishing threats before they can be exploited for malicious purposes. It provides a streamlined solution for identifying harmful resources efficiently.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "contact@fishfish.gg"
+    },
+    "termsOfService": "https://fishfish.gg/"
+  },
+  "servers": [
+    {
+      "url": "https://api.fishfish.gg",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/check": {
+      "post": {
+        "summary": "Check URL for phishing threats",
+        "description": "Analyzes a URL to detect if it is associated with phishing or malicious activity",
+        "operationId": "checkUrl",
+        "tags": [
+          "Detection"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The URL to check for phishing threats",
+                    "example": "https://example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful analysis of the URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "The analyzed URL"
+                    },
+                    "isPhishing": {
+                      "type": "boolean",
+                      "description": "Whether the URL is identified as phishing"
+                    },
+                    "threatLevel": {
+                      "type": "string",
+                      "enum": [
+                        "low",
+                        "medium",
+                        "high",
+                        "critical"
+                      ],
+                      "description": "The severity level of the threat"
+                    },
+                    "score": {
+                      "type": "number",
+                      "description": "Confidence score of the detection (0-100)"
+                    },
+                    "details": {
+                      "type": "string",
+                      "description": "Additional information about the detection"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid URL format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/scan": {
+      "get": {
+        "summary": "Scan and retrieve threat information",
+        "description": "Retrieves detailed information about previously scanned resources or performs a scan based on query parameters",
+        "operationId": "scanResource",
+        "tags": [
+          "Detection"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "URL to scan for phishing threats",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Domain to scan for phishing threats",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scanId",
+            "in": "query",
+            "description": "ID of a previous scan to retrieve results",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful scan operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "scanId": {
+                      "type": "string",
+                      "description": "Unique identifier for the scan"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "When the scan was performed"
+                    },
+                    "resource": {
+                      "type": "string",
+                      "description": "The scanned resource (URL or domain)"
+                    },
+                    "isPhishing": {
+                      "type": "boolean",
+                      "description": "Whether the resource is identified as phishing"
+                    },
+                    "threatLevel": {
+                      "type": "string",
+                      "enum": [
+                        "low",
+                        "medium",
+                        "high",
+                        "critical"
+                      ],
+                      "description": "The severity level of the threat"
+                    },
+                    "indicators": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "List of phishing indicators detected"
+                    },
+                    "recommendation": {
+                      "type": "string",
+                      "description": "Recommended action based on the scan results"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Scan not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "details": {
+            "type": "string",
+            "description": "Additional error details"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key for authentication"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Detection",
+      "description": "Operations related to phishing detection and threat analysis"
+    }
+  ],
+  "externalDocs": {
+    "description": "FishFish Documentation",
+    "url": "https://fishfish.gg/"
+  }
+}

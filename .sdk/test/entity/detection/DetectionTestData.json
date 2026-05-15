@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "detection": {
+      "DETECTION00": {
+        "detail": "s64",
+        "indicator": [],
+        "is_phishing": true,
+        "recommendation": "s67",
+        "resource": "s68",
+        "scan_id": "SCAN01",
+        "score": 106,
+        "threat_level": "s6b",
+        "timestamp": "s6c",
+        "url": "s6d"
+      },
+      "DETECTION01": {
+        "detail": "sc8",
+        "indicator": [],
+        "is_phishing": true,
+        "recommendation": "scb",
+        "resource": "scc",
+        "scan_id": "SCAN01",
+        "score": 206,
+        "threat_level": "scf",
+        "timestamp": "sd0",
+        "url": "sd1"
+      },
+      "DETECTION02": {
+        "detail": "s12c",
+        "indicator": [],
+        "is_phishing": true,
+        "recommendation": "s12f",
+        "resource": "s130",
+        "scan_id": "SCAN01",
+        "score": 306,
+        "threat_level": "s133",
+        "timestamp": "s134",
+        "url": "s135"
+      }
+    }
+  },
+  "new": {
+    "detection": {
+      "detection_ref01": {
+        "detail": "s190",
+        "indicator": [],
+        "is_phishing": true,
+        "recommendation": "s193",
+        "resource": "s194",
+        "scan_id": "SCAN01",
+        "score": 406,
+        "threat_level": "s197",
+        "timestamp": "s198",
+        "url": "s199"
+      }
+    }
+  }
+}
