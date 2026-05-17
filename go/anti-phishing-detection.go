@@ -1,10 +1,10 @@
 package voxgigantiphishingdetectionsdk
 
 import (
-	"github.com/voxgig-sdk/anti-phishing-detection-sdk/core"
-	"github.com/voxgig-sdk/anti-phishing-detection-sdk/entity"
-	"github.com/voxgig-sdk/anti-phishing-detection-sdk/feature"
-	_ "github.com/voxgig-sdk/anti-phishing-detection-sdk/utility"
+	"github.com/voxgig-sdk/anti-phishing-detection-sdk/go/core"
+	"github.com/voxgig-sdk/anti-phishing-detection-sdk/go/entity"
+	"github.com/voxgig-sdk/anti-phishing-detection-sdk/go/feature"
+	_ "github.com/voxgig-sdk/anti-phishing-detection-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk"
-	"github.com/voxgig-sdk/anti-phishing-detection-sdk/core"
+	sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk/go"
+	"github.com/voxgig-sdk/anti-phishing-detection-sdk/go/core"
 )
 
 func TestDetectionDirect(t *testing.T) {

@@ -12,9 +12,9 @@ import (
 	"sync"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk"
+	sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk/go"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/anti-phishing-detection-sdk/go/utility/struct"
 )
 
 var envLocalOnce sync.Once

@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk"
+	sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk/go"
 )
 
 func TestExists(t *testing.T) {

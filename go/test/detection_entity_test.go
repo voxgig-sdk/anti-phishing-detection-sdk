@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk"
-	"github.com/voxgig-sdk/anti-phishing-detection-sdk/core"
+	sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk/go"
+	"github.com/voxgig-sdk/anti-phishing-detection-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/anti-phishing-detection-sdk/go/utility/struct"
 )
 
 func TestDetectionEntity(t *testing.T) {

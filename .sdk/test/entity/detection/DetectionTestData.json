@@ -11,7 +11,8 @@
         "score": 106,
         "threat_level": "s6b",
         "timestamp": "s6c",
-        "url": "s6d"
+        "url": "s6d",
+        "id": "DETECTION00"
       },
       "DETECTION01": {
         "detail": "sc8",
@@ -23,7 +24,8 @@
         "score": 206,
         "threat_level": "scf",
         "timestamp": "sd0",
-        "url": "sd1"
+        "url": "sd1",
+        "id": "DETECTION01"
       },
       "DETECTION02": {
         "detail": "s12c",
@@ -35,7 +37,8 @@
         "score": 306,
         "threat_level": "s133",
         "timestamp": "s134",
-        "url": "s135"
+        "url": "s135",
+        "id": "DETECTION02"
       }
     }
   },
