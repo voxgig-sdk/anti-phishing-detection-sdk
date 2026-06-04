@@ -127,7 +127,6 @@ func detectionBasicSetup(extra map[string]any) *entityTestSetup {
 		"ANTIPHISHINGDETECTION_TEST_DETECTION_ENTID": idmap,
 		"ANTIPHISHINGDETECTION_TEST_LIVE":      "FALSE",
 		"ANTIPHISHINGDETECTION_TEST_EXPLAIN":   "FALSE",
-		"ANTIPHISHINGDETECTION_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ANTIPHISHINGDETECTION_TEST_DETECTION_ENTID"])
@@ -138,7 +137,6 @@ func detectionBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ANTIPHISHINGDETECTION_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["ANTIPHISHINGDETECTION_APIKEY"],
 			},
 			extra,
 		})

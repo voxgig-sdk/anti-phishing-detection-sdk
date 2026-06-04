@@ -121,7 +121,6 @@ function basicSetup(extra?: any) {
     'ANTI_PHISHING_DETECTION_TEST_DETECTION_ENTID': idmap,
     'ANTI_PHISHING_DETECTION_TEST_LIVE': 'FALSE',
     'ANTI_PHISHING_DETECTION_TEST_EXPLAIN': 'FALSE',
-    'ANTI_PHISHING_DETECTION_APIKEY': 'NONE',
   })
 
   idmap = env['ANTI_PHISHING_DETECTION_TEST_DETECTION_ENTID']
@@ -131,7 +130,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new AntiPhishingDetectionSDK(merge([
       {
-        apikey: env.ANTI_PHISHING_DETECTION_APIKEY,
       },
       extra
     ]))

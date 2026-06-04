@@ -17,7 +17,17 @@
         ],
         "termsOfService": "https://fishfish.gg/",
         "title": "Anti-Phishing Detection",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Check whether a domain or URL is known phishing, malware, or safe via the community-run FishFish threat database",
+        "homepage": "https://fishfish.gg/",
+        "docs_url": "https://api.fishfish.gg/docs",
+        "license_short": "No licence published; usage gated by anti-abuse policy.",
+        "license_md": "- No explicit licence is published alongside the FishFish API or its threat data.\n- Read access to domain and URL lookups is open; write operations require an API key as an anti-abuse measure.\n- Treat returned classifications as advisory and verify before taking automated action against users.",
+        "about_md": "[FishFish](https://fishfish.gg/) is an anti-phishing service that focuses on quick, automated detection of malicious resources before they can be used at scale. The community maintains a shared database of domains and URLs categorised as `safe`, `phishing`, or `malware`, exposed through the API at `https://api.fishfish.gg`.\n\nWhat you can do with the API:\n\n- Look up a single domain via `GET /v1/domains/{domain}` to retrieve its current category.\n- List tracked domains via `GET /v1/domains` for bulk consumption.\n- Equivalent `/v1/urls` endpoints exist for full URL classifications.\n- Subscribe to live database changes over a WebSocket stream at `wss://api.fishfish.gg/v1/stream` instead of polling.\n\nRead endpoints are publicly accessible with CORS enabled. Submitting, editing, or deleting entries requires an API token in the `Authorization` header; session tokens issued via `/users/@me/tokens` are valid for one hour and must be refreshed from a long-lived main token.",
+        "entity_desc": {
+          "detection": "Phishing and malware classifications for domains and URLs, served from the FishFish threat database under `/v1/domains/{domain}` and `/v1/urls/{url}`, with a `wss://api.fishfish.gg/v1/stream` feed for live updates."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +35,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "detection": {

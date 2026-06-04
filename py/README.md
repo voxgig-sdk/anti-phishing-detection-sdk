@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from antiphishingdetection_sdk import AntiPhishingDetectionSDK
 
-client = AntiPhishingDetectionSDK({
-    "apikey": os.environ.get("ANTI-PHISHING-DETECTION_APIKEY"),
-})
+client = AntiPhishingDetectionSDK({})
 ```
 
 ### 2. List detections
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ANTI-PHISHING-DETECTION_TEST_LIVE=TRUE
-ANTI-PHISHING-DETECTION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -153,7 +149,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

@@ -15,9 +15,6 @@ module AntiPhishingDetectionConfig
       },
       "options" => {
         "base" => "https://api.fishfish.gg",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

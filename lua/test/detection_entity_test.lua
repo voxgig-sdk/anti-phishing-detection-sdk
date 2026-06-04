@@ -98,7 +98,6 @@ function detection_basic_setup(extra)
     ["ANTIPHISHINGDETECTION_TEST_DETECTION_ENTID"] = idmap,
     ["ANTIPHISHINGDETECTION_TEST_LIVE"] = "FALSE",
     ["ANTIPHISHINGDETECTION_TEST_EXPLAIN"] = "FALSE",
-    ["ANTIPHISHINGDETECTION_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -110,7 +109,6 @@ function detection_basic_setup(extra)
   if env["ANTIPHISHINGDETECTION_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["ANTIPHISHINGDETECTION_APIKEY"],
       },
       extra or {},
     })

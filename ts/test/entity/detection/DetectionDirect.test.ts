@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ANTIPHISHINGDETECTION_TEST_DETECTION_ENTID': {},
     'ANTIPHISHINGDETECTION_TEST_LIVE': 'FALSE',
-    'ANTIPHISHINGDETECTION_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ANTIPHISHINGDETECTION_TEST_LIVE
 
   if (live) {
     const client = new AntiPhishingDetectionSDK({
-      apikey: env.ANTIPHISHINGDETECTION_APIKEY,
     })
 
     let idmap: any = env['ANTIPHISHINGDETECTION_TEST_DETECTION_ENTID']

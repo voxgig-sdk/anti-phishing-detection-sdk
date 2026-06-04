@@ -93,14 +93,12 @@ func detectionDirectSetup(mockres any) *detectionDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ANTIPHISHINGDETECTION_TEST_DETECTION_ENTID": map[string]any{},
 		"ANTIPHISHINGDETECTION_TEST_LIVE":    "FALSE",
-		"ANTIPHISHINGDETECTION_APIKEY":       "NONE",
 	})
 
 	live := env["ANTIPHISHINGDETECTION_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ANTIPHISHINGDETECTION_APIKEY"],
 		}
 		client := sdk.NewAntiPhishingDetectionSDK(mergedOpts)
 

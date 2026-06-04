@@ -62,14 +62,12 @@ def detection_direct_setup(mockres)
   env = Runner.env_override({
     "ANTIPHISHINGDETECTION_TEST_DETECTION_ENTID" => {},
     "ANTIPHISHINGDETECTION_TEST_LIVE" => "FALSE",
-    "ANTIPHISHINGDETECTION_APIKEY" => "NONE",
   })
 
   live = env["ANTIPHISHINGDETECTION_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["ANTIPHISHINGDETECTION_APIKEY"],
     }
     client = AntiPhishingDetectionSDK.new(merged_opts)
     return {
