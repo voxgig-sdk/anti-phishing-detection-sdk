@@ -1,6 +1,11 @@
 # AntiPhishingDetection Ruby SDK
 
-The Ruby SDK for the AntiPhishingDetection API. Provides an entity-oriented interface using idiomatic Ruby conventions.
+
+
+The Ruby SDK for the AntiPhishingDetection API — an entity-oriented client using idiomatic Ruby conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -31,13 +36,15 @@ loading a specific record.
 ```ruby
 require_relative "AntiPhishingDetection_sdk"
 
-client = AntiPhishingDetectionSDK.new({})
+client = AntiPhishingDetectionSDK.new({
+  "apikey" => ENV["ANTI-PHISHING-DETECTION_APIKEY"],
+})
 ```
 
 ### 2. List detections
 
 ```ruby
-result, err = client.Detection(nil).list(nil, nil)
+result, err = client.Detection().list
 raise err if err
 
 if result.is_a?(Array)
@@ -52,7 +59,7 @@ end
 
 ```ruby
 # Create
-created, _ = client.Detection(nil).create({ "name" => "Example" }, nil)
+created, _ = client.Detection().create({ "name" => "Example" })
 
 ```
 
@@ -97,11 +104,9 @@ puts fetchdef["headers"]
 Create a mock client for unit testing — no server required:
 
 ```ruby
-client = AntiPhishingDetectionSDK.test(nil, nil)
+client = AntiPhishingDetectionSDK.test
 
-result, err = client.AntiPhishingDetection(nil).load(
-  { "id" => "test01" }, nil
-)
+result, err = client.AntiPhishingDetection().load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -133,6 +138,7 @@ Create a `.env.local` file at the project root:
 
 ```
 ANTI-PHISHING-DETECTION_TEST_LIVE=TRUE
+ANTI-PHISHING-DETECTION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -155,6 +161,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

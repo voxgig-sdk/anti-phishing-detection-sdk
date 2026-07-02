@@ -1,6 +1,11 @@
 # AntiPhishingDetection Python SDK
 
-The Python SDK for the AntiPhishingDetection API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the AntiPhishingDetection API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from antiphishingdetection_sdk import AntiPhishingDetectionSDK
 
-client = AntiPhishingDetectionSDK({})
+client = AntiPhishingDetectionSDK({
+    "apikey": os.environ.get("ANTI-PHISHING-DETECTION_APIKEY"),
+})
 ```
 
 ### 2. List detections
 
 ```python
-result, err = client.Detection(None).list(None, None)
+result, err = client.Detection().list()
 if err:
     raise Exception(err)
 
@@ -45,7 +53,7 @@ if isinstance(result, list):
 
 ```python
 # Create
-created, _ = client.Detection(None).create({"name": "Example"}, None)
+created, _ = client.Detection().create({"name": "Example"})
 
 ```
 
@@ -91,11 +99,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = AntiPhishingDetectionSDK.test(None, None)
+client = AntiPhishingDetectionSDK.test()
 
-result, err = client.AntiPhishingDetection(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.AntiPhishingDetection().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -126,6 +132,7 @@ Create a `.env.local` file at the project root:
 
 ```
 ANTI-PHISHING-DETECTION_TEST_LIVE=TRUE
+ANTI-PHISHING-DETECTION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -149,6 +156,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

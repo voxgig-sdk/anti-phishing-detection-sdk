@@ -1,21 +1,8 @@
 # AntiPhishingDetection SDK
 
-Check whether a domain or URL is known phishing, malware, or safe via the community-run FishFish threat database
+Anti-Phishing Detection client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Anti-Phishing Detection
-
-[FishFish](https://fishfish.gg/) is an anti-phishing service that focuses on quick, automated detection of malicious resources before they can be used at scale. The community maintains a shared database of domains and URLs categorised as `safe`, `phishing`, or `malware`, exposed through the API at `https://api.fishfish.gg`.
-
-What you can do with the API:
-
-- Look up a single domain via `GET /v1/domains/{domain}` to retrieve its current category.
-- List tracked domains via `GET /v1/domains` for bulk consumption.
-- Equivalent `/v1/urls` endpoints exist for full URL classifications.
-- Subscribe to live database changes over a WebSocket stream at `wss://api.fishfish.gg/v1/stream` instead of polling.
-
-Read endpoints are publicly accessible with CORS enabled. Submitting, editing, or deleting entries requires an API token in the `Authorization` header; session tokens issued via `/users/@me/tokens` are valid for one hour and must be refreshed from a long-lived main token.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install anti-phishing-detection-sdk
 luarocks install anti-phishing-detection-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { AntiPhishingDetectionSDK } from 'anti-phishing-detection'
 
-const client = new AntiPhishingDetectionSDK({})
+const client = new AntiPhishingDetectionSDK({
+  apikey: process.env.ANTI-PHISHING-DETECTION_APIKEY,
+})
 
 // List all detections
 const detections = await client.Detection().list()
+console.log(detections.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Detection** | Phishing and malware classifications for domains and URLs, served from the FishFish threat database under `/v1/domains/{domain}` and `/v1/urls/{url}`, with a `wss://api.fishfish.gg/v1/stream` feed for live updates. | `/check` |
+| **Detection** |  | `/check` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,12 +100,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from antiphishingdetection_sdk import AntiPhishingDetectionSDK
 
-client = AntiPhishingDetectionSDK({})
+client = AntiPhishingDetectionSDK({
+    "apikey": os.environ.get("ANTI-PHISHING-DETECTION_APIKEY"),
+})
 
 # List all detections
-detections, err = client.Detection(None).list(None, None)
+detections, err = client.Detection().list()
+print(detections)
 ```
 
 ### PHP
@@ -125,10 +118,13 @@ detections, err = client.Detection(None).list(None, None)
 <?php
 require_once 'antiphishingdetection_sdk.php';
 
-$client = new AntiPhishingDetectionSDK([]);
+$client = new AntiPhishingDetectionSDK([
+    "apikey" => getenv("ANTI-PHISHING-DETECTION_APIKEY"),
+]);
 
 // List all detections
-[$detections, $err] = $client->Detection(null)->list(null, null);
+[$detections, $err] = $client->Detection()->list();
+print_r($detections);
 ```
 
 ### Golang
@@ -136,10 +132,13 @@ $client = new AntiPhishingDetectionSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk/go"
 
-client := sdk.NewAntiPhishingDetectionSDK(map[string]any{})
+client := sdk.NewAntiPhishingDetectionSDK(map[string]any{
+    "apikey": os.Getenv("ANTI-PHISHING-DETECTION_APIKEY"),
+})
 
 // List all detections
 detections, err := client.Detection(nil).List(nil, nil)
+fmt.Println(detections)
 ```
 
 ### Ruby
@@ -147,10 +146,13 @@ detections, err := client.Detection(nil).List(nil, nil)
 ```ruby
 require_relative "AntiPhishingDetection_sdk"
 
-client = AntiPhishingDetectionSDK.new({})
+client = AntiPhishingDetectionSDK.new({
+  "apikey" => ENV["ANTI-PHISHING-DETECTION_APIKEY"],
+})
 
 # List all detections
-detections, err = client.Detection(nil).list(nil, nil)
+detections, err = client.Detection().list
+puts detections
 ```
 
 ### Lua
@@ -158,10 +160,13 @@ detections, err = client.Detection(nil).list(nil, nil)
 ```lua
 local sdk = require("anti-phishing-detection_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ANTI-PHISHING-DETECTION_APIKEY"),
+})
 
 -- List all detections
-local detections, err = client:Detection(nil):list(nil, nil)
+local detections, err = client:Detection():list()
+print(detections)
 ```
 
 ## Unit testing in offline mode
@@ -180,25 +185,21 @@ const result = await client.Detection().load({ id: 'test01' })
 ### Python
 
 ```python
-client = AntiPhishingDetectionSDK.test(None, None)
-result, err = client.Detection(None).load(
-    {"id": "test01"}, None
-)
+client = AntiPhishingDetectionSDK.test()
+result, err = client.Detection().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = AntiPhishingDetectionSDK::test(null, null);
-[$result, $err] = $client->Detection(null)->load(
-    ["id" => "test01"], null
-);
+$client = AntiPhishingDetectionSDK::test();
+[$result, $err] = $client->Detection()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Detection(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -207,19 +208,15 @@ result, err := client.Detection(nil).Load(
 ### Ruby
 
 ```ruby
-client = AntiPhishingDetectionSDK.test(nil, nil)
-result, err = client.Detection(nil).load(
-  { "id" => "test01" }, nil
-)
+client = AntiPhishingDetectionSDK.test
+result, err = client.Detection().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Detection(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Detection():load({ id = "test01" })
 ```
 
 ## How it works
@@ -323,15 +320,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Anti-Phishing Detection
-
-- Upstream: [https://fishfish.gg/](https://fishfish.gg/)
-- API docs: [https://api.fishfish.gg/docs](https://api.fishfish.gg/docs)
-
-- No explicit licence is published alongside the FishFish API or its threat data.
-- Read access to domain and URL lookups is open; write operations require an API key as an anti-abuse measure.
-- Treat returned classifications as advisory and verify before taking automated action against users.
 
 ---
 

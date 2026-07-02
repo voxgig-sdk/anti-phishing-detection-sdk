@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://api.fishfish.gg",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,69 +29,70 @@ def make_config():
       "detection": {
         "fields": [
           {
+            "active": True,
             "name": "detail",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "indicator",
             "req": False,
             "type": "`$ARRAY`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "is_phishing",
             "req": False,
             "type": "`$BOOLEAN`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "recommendation",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "resource",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 4,
           },
           {
+            "active": True,
             "name": "scan_id",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 5,
           },
           {
+            "active": True,
             "name": "score",
             "req": False,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 6,
           },
           {
+            "active": True,
             "name": "threat_level",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 7,
           },
           {
+            "active": True,
             "name": "timestamp",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 8,
           },
           {
+            "active": True,
             "name": "url",
             "op": {
               "create": {
@@ -98,63 +102,64 @@ def make_config():
             },
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 9,
           },
         ],
         "name": "detection",
         "op": {
           "create": {
+            "input": "data",
             "name": "create",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "POST",
                 "orig": "/check",
                 "parts": [
                   "check",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "create",
           },
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "domain",
                       "orig": "domain",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "scan_id",
                       "orig": "scan_id",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "url",
                       "orig": "url",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -174,11 +179,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },

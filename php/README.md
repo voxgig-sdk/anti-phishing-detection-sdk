@@ -1,6 +1,11 @@
 # AntiPhishingDetection PHP SDK
 
-The PHP SDK for the AntiPhishingDetection API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the AntiPhishingDetection API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'antiphishingdetection_sdk.php';
 
-$client = new AntiPhishingDetectionSDK([]);
+$client = new AntiPhishingDetectionSDK([
+    "apikey" => getenv("ANTI-PHISHING-DETECTION_APIKEY"),
+]);
 ```
 
 ### 2. List detections
 
 ```php
-[$result, $err] = $client->Detection(null)->list(null, null);
+[$result, $err] = $client->Detection()->list();
 if ($err) { throw new \Exception($err); }
 
 if (is_array($result)) {
@@ -41,7 +48,7 @@ if (is_array($result)) {
 
 ```php
 // Create
-[$created, $_] = $client->Detection(null)->create(["name" => "Example"], null);
+[$created, $_] = $client->Detection()->create(["name" => "Example"]);
 
 ```
 
@@ -86,11 +93,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = AntiPhishingDetectionSDK::test(null, null);
+$client = AntiPhishingDetectionSDK::test();
 
-[$result, $err] = $client->AntiPhishingDetection(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->AntiPhishingDetection()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -125,6 +130,7 @@ Create a `.env.local` file at the project root:
 
 ```
 ANTI-PHISHING-DETECTION_TEST_LIVE=TRUE
+ANTI-PHISHING-DETECTION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,6 +153,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

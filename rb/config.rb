@@ -15,6 +15,9 @@ module AntiPhishingDetectionConfig
       },
       "options" => {
         "base" => "https://api.fishfish.gg",
+        "auth" => {
+          "prefix" => "Bearer",
+        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -26,69 +29,70 @@ module AntiPhishingDetectionConfig
         "detection" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "detail",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "indicator",
               "req" => false,
               "type" => "`$ARRAY`",
-              "active" => true,
               "index$" => 1,
             },
             {
+              "active" => true,
               "name" => "is_phishing",
               "req" => false,
               "type" => "`$BOOLEAN`",
-              "active" => true,
               "index$" => 2,
             },
             {
+              "active" => true,
               "name" => "recommendation",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 3,
             },
             {
+              "active" => true,
               "name" => "resource",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 4,
             },
             {
+              "active" => true,
               "name" => "scan_id",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 5,
             },
             {
+              "active" => true,
               "name" => "score",
               "req" => false,
               "type" => "`$NUMBER`",
-              "active" => true,
               "index$" => 6,
             },
             {
+              "active" => true,
               "name" => "threat_level",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 7,
             },
             {
+              "active" => true,
               "name" => "timestamp",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 8,
             },
             {
+              "active" => true,
               "name" => "url",
               "op" => {
                 "create" => {
@@ -98,63 +102,64 @@ module AntiPhishingDetectionConfig
               },
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 9,
             },
           ],
           "name" => "detection",
           "op" => {
             "create" => {
+              "input" => "data",
               "name" => "create",
               "points" => [
                 {
+                  "active" => true,
+                  "args" => {},
                   "method" => "POST",
                   "orig" => "/check",
                   "parts" => [
                     "check",
                   ],
+                  "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
-                  "args" => {},
-                  "select" => {},
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "create",
             },
             "list" => {
+              "input" => "data",
               "name" => "list",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "query" => [
                       {
+                        "active" => true,
                         "kind" => "query",
                         "name" => "domain",
                         "orig" => "domain",
                         "reqd" => false,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                       {
+                        "active" => true,
                         "kind" => "query",
                         "name" => "scan_id",
                         "orig" => "scan_id",
                         "reqd" => false,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                       {
+                        "active" => true,
                         "kind" => "query",
                         "name" => "url",
                         "orig" => "url",
                         "reqd" => false,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -174,11 +179,9 @@ module AntiPhishingDetectionConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "list",
             },
           },
