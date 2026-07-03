@@ -10,13 +10,13 @@ The Ruby SDK for the AntiPhishingDetection API — an entity-oriented client usi
 
 ## Install
 ```bash
-gem install anti-phishing-detection-sdk
+gem install voxgig-sdk-anti-phishing-detection
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "anti-phishing-detection-sdk"
+gem "voxgig-sdk-anti-phishing-detection"
 ```
 
 Then run:

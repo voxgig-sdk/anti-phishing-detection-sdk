@@ -10,7 +10,7 @@ The Python SDK for the AntiPhishingDetection API — an entity-oriented client f
 
 ## Install
 ```bash
-pip install anti-phishing-detection-sdk
+pip install voxgig-sdk-anti-phishing-detection
 ```
 
 Or install from source:

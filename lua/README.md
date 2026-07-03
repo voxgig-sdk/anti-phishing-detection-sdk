@@ -10,7 +10,7 @@ The Lua SDK for the AntiPhishingDetection API — an entity-oriented client usin
 
 ## Install
 ```bash
-luarocks install anti-phishing-detection-sdk
+luarocks install voxgig-sdk-anti-phishing-detection
 ```
 
 If the module is not yet published, add the source directory to

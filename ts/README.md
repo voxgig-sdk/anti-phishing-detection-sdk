@@ -10,7 +10,7 @@ The TypeScript SDK for the AntiPhishingDetection API — a type-safe, entity-ori
 
 ## Install
 ```bash
-npm install anti-phishing-detection
+npm install @voxgig-sdk/anti-phishing-detection
 ```
 ## Tutorial: your first API call
 

@@ -8,12 +8,14 @@ source = {
   dir = "anti-phishing-detection-sdk/lua"
 }
 description = {
-  summary = "AntiPhishingDetection SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Anti-Phishing Detection public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/anti-phishing-detection-sdk",
+  issues_url = "https://github.com/voxgig-sdk/anti-phishing-detection-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "anti-phishing-detection" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

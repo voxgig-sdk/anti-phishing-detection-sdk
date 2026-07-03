@@ -10,7 +10,7 @@ The PHP SDK for the AntiPhishingDetection API — an entity-oriented client usin
 
 ## Install
 ```bash
-composer require voxgig/anti-phishing-detection-sdk
+composer require voxgig-sdk/anti-phishing-detection
 ```
 
 
