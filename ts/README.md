@@ -9,9 +9,12 @@ The TypeScript SDK for the AntiPhishingDetection API — a type-safe, entity-ori
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/anti-phishing-detection
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AntiPhishingDetectionSDK } from 'anti-phishing-detection'
+import { AntiPhishingDetectionSDK } from '@voxgig-sdk/anti-phishing-detection'
 
 const client = new AntiPhishingDetectionSDK({
-  apikey: process.env.ANTI-PHISHING-DETECTION_APIKEY,
+  apikey: process.env.ANTI_PHISHING_DETECTION_APIKEY,
 })
 ```
 
 ### 2. List detections
 
 ```ts
-const result = await client.Detection().list()
+const result = await client.detection.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -43,7 +46,7 @@ if (result.ok) {
 
 ```ts
 // Create
-const created = await client.Detection().create({
+const created = await client.detection.create({
   name: 'Example',
 })
 
@@ -91,7 +94,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AntiPhishingDetectionSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.detection.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -108,7 +111,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.detection
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -145,8 +148,8 @@ const client = new AntiPhishingDetectionSDK({
 Create a `.env.local` file at the project root:
 
 ```
-ANTI-PHISHING-DETECTION_TEST_LIVE=TRUE
-ANTI-PHISHING-DETECTION_APIKEY=<your-key>
+ANTI_PHISHING_DETECTION_TEST_LIVE=TRUE
+ANTI_PHISHING_DETECTION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -287,7 +290,7 @@ API path: `/check`
 
 ### Detection
 
-Create an instance: `const detection = client.Detection()`
+Create an instance: `const detection = client.detection`
 
 #### Operations
 
@@ -314,13 +317,13 @@ Create an instance: `const detection = client.Detection()`
 #### Example: List
 
 ```ts
-const detections = await client.Detection().list()
+const detections = await client.detection.list()
 ```
 
 #### Example: Create
 
 ```ts
-const detection = await client.Detection().create({
+const detection = await client.detection.create({
 })
 ```
 
@@ -382,7 +385,7 @@ anti-phishing-detection/
 Import the SDK from the package root:
 
 ```ts
-import { AntiPhishingDetectionSDK } from 'anti-phishing-detection'
+import { AntiPhishingDetectionSDK } from '@voxgig-sdk/anti-phishing-detection'
 ```
 
 ### Entity state
@@ -392,11 +395,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const detection = client.detection
+await detection.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// detection.data() now returns the loaded detection data
+// detection.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

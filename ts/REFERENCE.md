@@ -110,7 +110,7 @@ Alias for `AntiPhishingDetectionSDK.test()`.
 ## DetectionEntity
 
 ```ts
-const detection = client.Detection()
+const detection = client.detection
 ```
 
 ### Fields
@@ -150,7 +150,7 @@ const detection = client.Detection()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.Detection().create({
+const result = await client.detection.create({
 })
 ```
 
@@ -159,7 +159,7 @@ const result = await client.Detection().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Detection().list()
+const results = await client.detection.list()
 ```
 
 ### Common Methods

@@ -43,16 +43,14 @@ class DetectionEntityTest extends TestCase
         $detection_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.detection"), "detection_ref01"));
 
-        [$detection_ref01_data_result, $err] = $detection_ref01_ent->create($detection_ref01_data, null);
-        $this->assertNull($err);
+        $detection_ref01_data_result = $detection_ref01_ent->create($detection_ref01_data, null);
         $detection_ref01_data = Helpers::to_map($detection_ref01_data_result);
         $this->assertNotNull($detection_ref01_data);
 
         // LIST
         $detection_ref01_match = [];
 
-        [$detection_ref01_list_result, $err] = $detection_ref01_ent->list($detection_ref01_match, null);
-        $this->assertNull($err);
+        $detection_ref01_list_result = $detection_ref01_ent->list($detection_ref01_match, null);
         $this->assertIsArray($detection_ref01_list_result);
 
         $found_item = sdk_select(

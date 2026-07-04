@@ -10,26 +10,26 @@ This is an unofficial SDK for the Anti-Phishing Detection public API, generated 
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/anti-phishing-detection` | `npm install @voxgig-sdk/anti-phishing-detection` |
-| Python | `voxgig-sdk-anti-phishing-detection` | `pip install voxgig-sdk-anti-phishing-detection` |
-| PHP | `voxgig-sdk/anti-phishing-detection` | `composer require voxgig-sdk/anti-phishing-detection` |
-| Golang | `github.com/voxgig-sdk/anti-phishing-detection-sdk/go` | `go get github.com/voxgig-sdk/anti-phishing-detection-sdk/go` |
-| Ruby | `voxgig-sdk-anti-phishing-detection` | `gem install voxgig-sdk-anti-phishing-detection` |
-| Lua | `voxgig-sdk-anti-phishing-detection` | `luarocks install voxgig-sdk-anti-phishing-detection` |
+| TypeScript | `@voxgig-sdk/anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
+| Python | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
+| PHP | `voxgig-sdk/anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/anti-phishing-detection-sdk/go` | `go get github.com/voxgig-sdk/anti-phishing-detection-sdk/go@latest` |
+| Ruby | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
+| Lua | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { AntiPhishingDetectionSDK } from 'anti-phishing-detection'
+import { AntiPhishingDetectionSDK } from '@voxgig-sdk/anti-phishing-detection'
 
 const client = new AntiPhishingDetectionSDK({
-  apikey: process.env.ANTI-PHISHING-DETECTION_APIKEY,
+  apikey: process.env.ANTI_PHISHING_DETECTION_APIKEY,
 })
 
 // List all detections
-const detections = await client.Detection().list()
+const detections = await client.detection.list()
 console.log(detections.data)
 ```
 
@@ -71,7 +71,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Detection** |  | `/check` |
+| **Detection** | The Detection entity (create, list). | `/check` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -85,11 +85,11 @@ import os
 from antiphishingdetection_sdk import AntiPhishingDetectionSDK
 
 client = AntiPhishingDetectionSDK({
-    "apikey": os.environ.get("ANTI-PHISHING-DETECTION_APIKEY"),
+    "apikey": os.environ.get("ANTI_PHISHING_DETECTION_APIKEY"),
 })
 
 # List all detections
-detections, err = client.Detection().list()
+detections = client.detection.list()
 print(detections)
 ```
 
@@ -100,11 +100,11 @@ print(detections)
 require_once 'antiphishingdetection_sdk.php';
 
 $client = new AntiPhishingDetectionSDK([
-    "apikey" => getenv("ANTI-PHISHING-DETECTION_APIKEY"),
+    "apikey" => getenv("ANTI_PHISHING_DETECTION_APIKEY"),
 ]);
 
-// List all detections
-[$detections, $err] = $client->Detection()->list();
+// List all detections (throws on error)
+$detections = $client->detection()->list();
 print_r($detections);
 ```
 
@@ -114,7 +114,7 @@ print_r($detections);
 import sdk "github.com/voxgig-sdk/anti-phishing-detection-sdk/go"
 
 client := sdk.NewAntiPhishingDetectionSDK(map[string]any{
-    "apikey": os.Getenv("ANTI-PHISHING-DETECTION_APIKEY"),
+    "apikey": os.Getenv("ANTI_PHISHING_DETECTION_APIKEY"),
 })
 
 // List all detections
@@ -128,11 +128,11 @@ fmt.Println(detections)
 require_relative "AntiPhishingDetection_sdk"
 
 client = AntiPhishingDetectionSDK.new({
-  "apikey" => ENV["ANTI-PHISHING-DETECTION_APIKEY"],
+  "apikey" => ENV["ANTI_PHISHING_DETECTION_APIKEY"],
 })
 
 # List all detections
-detections, err = client.Detection().list
+detections = client.detection.list
 puts detections
 ```
 
@@ -142,11 +142,11 @@ puts detections
 local sdk = require("anti-phishing-detection_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("ANTI-PHISHING-DETECTION_APIKEY"),
+  apikey = os.getenv("ANTI_PHISHING_DETECTION_APIKEY"),
 })
 
 -- List all detections
-local detections, err = client:Detection():list()
+local detections, err = client:detection():list()
 print(detections)
 ```
 
@@ -159,7 +159,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = AntiPhishingDetectionSDK.test()
-const result = await client.Detection().load({ id: 'test01' })
+const result = await client.detection.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -167,14 +167,14 @@ const result = await client.Detection().load({ id: 'test01' })
 
 ```python
 client = AntiPhishingDetectionSDK.test()
-result, err = client.Detection().load({"id": "test01"})
+result = client.detection.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = AntiPhishingDetectionSDK::test();
-[$result, $err] = $client->Detection()->load(["id" => "test01"]);
+$result = $client->detection()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -190,14 +190,14 @@ result, err := client.Detection(nil).Load(
 
 ```ruby
 client = AntiPhishingDetectionSDK.test
-result, err = client.Detection().load({ "id" => "test01" })
+result = client.detection.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Detection():load({ id = "test01" })
+local result, err = client:detection():load({ id = "test01" })
 ```
 
 ## How it works
@@ -250,7 +250,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -259,7 +259,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -277,7 +277,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

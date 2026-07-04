@@ -245,6 +245,9 @@ func (sdk *AntiPhishingDetectionSDK) Direct(fetchargs map[string]any) (map[strin
 }
 
 
+// Detection returns a Detection entity bound to this client.
+// Idiomatic usage: client.Detection(nil).List(nil, nil) or
+// client.Detection(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AntiPhishingDetectionSDK) Detection(data map[string]any) AntiPhishingDetectionEntity {
 	return NewDetectionEntityFunc(sdk, data)
 }

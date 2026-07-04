@@ -36,16 +36,14 @@ class DetectionEntityTest < Minitest::Test
     detection_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.detection"), "detection_ref01"))
 
-    detection_ref01_data_result, err = detection_ref01_ent.create(detection_ref01_data, nil)
-    assert_nil err
+    detection_ref01_data_result = detection_ref01_ent.create(detection_ref01_data, nil)
     detection_ref01_data = Helpers.to_map(detection_ref01_data_result)
     assert !detection_ref01_data.nil?
 
     # LIST
     detection_ref01_match = {}
 
-    detection_ref01_list_result, err = detection_ref01_ent.list(detection_ref01_match, nil)
-    assert_nil err
+    detection_ref01_list_result = detection_ref01_ent.list(detection_ref01_match, nil)
     assert detection_ref01_list_result.is_a?(Array)
 
     found_item = Vs.select(

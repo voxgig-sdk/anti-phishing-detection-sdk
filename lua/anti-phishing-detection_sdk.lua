@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:detection():list() / client:detection():load({ id = ... })
+function AntiPhishingDetectionSDK:detection(data)
+  local EntityMod = require("entity.detection_entity")
+  if data == nil then
+    if self._detection == nil then
+      self._detection = EntityMod.new(self, nil)
+    end
+    return self._detection
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:detection() instead.
 function AntiPhishingDetectionSDK:Detection(data)
   local EntityMod = require("entity.detection_entity")
   return EntityMod.new(self, data)

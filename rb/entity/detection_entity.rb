@@ -45,6 +45,7 @@ class DetectionEntity
     end
   end
 
+  # @return [Detection, Hash] the current Detection data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class DetectionEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Detection fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class DetectionEntity
   
 
   
+  # List Detection items matching the given filter.
+  #
+  # @param reqmatch [DetectionListMatch, Hash, nil] match filter (any subset of Detection fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Detection>, Array] the matching Detection items; raises AntiPhishingDetectionError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -85,6 +92,11 @@ class DetectionEntity
 
 
   
+  # Create a new Detection.
+  #
+  # @param reqdata [DetectionCreateData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Detection, Hash] the created Detection; raises AntiPhishingDetectionError on failure
   def create(reqdata, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

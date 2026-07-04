@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch DetectionListMatch
+---@param ctrl? table
+---@return Detection[]
+---@return string? err
 function DetectionEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -103,6 +107,10 @@ end
 
 
 
+---@param reqdata DetectionCreateData
+---@param ctrl? table
+---@return Detection
+---@return string? err
 function DetectionEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

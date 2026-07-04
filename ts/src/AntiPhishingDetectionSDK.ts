@@ -2,6 +2,8 @@
 
 import { DetectionEntity } from './entity/DetectionEntity'
 
+export type * from './AntiPhishingDetectionTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class AntiPhishingDetectionSDK {
 
 
 
+  _detection?: DetectionEntity
+
+  // Idiomatic facade: `client.detection.list()` / `client.detection.load({ id })`.
+  get detection(): DetectionEntity {
+    return (this._detection ??= new DetectionEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.detection` instead. */
   Detection(data?: any) {
     const self = this
     return new DetectionEntity(self,data)

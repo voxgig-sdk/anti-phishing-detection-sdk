@@ -44,16 +44,13 @@ class TestDetectionEntity:
         detection_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.detection"), "detection_ref01"))
 
-        detection_ref01_data_result, err = detection_ref01_ent.create(detection_ref01_data, None)
-        assert err is None
-        detection_ref01_data = helpers.to_map(detection_ref01_data_result)
+        detection_ref01_data = helpers.to_map(detection_ref01_ent.create(detection_ref01_data, None))
         assert detection_ref01_data is not None
 
         # LIST
         detection_ref01_match = {}
 
-        detection_ref01_list_result, err = detection_ref01_ent.list(detection_ref01_match, None)
-        assert err is None
+        detection_ref01_list_result = detection_ref01_ent.list(detection_ref01_match, None)
         assert isinstance(detection_ref01_list_result, list)
 
         found_item = vs.select(
