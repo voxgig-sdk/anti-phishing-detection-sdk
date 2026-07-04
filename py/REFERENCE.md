@@ -81,7 +81,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## DetectionEntity
 
 ```python
-detection = client.detection
+detection = client.Detection()
 ```
 
 ### Fields
@@ -121,7 +121,7 @@ detection = client.detection
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.detection.create({
+result = client.Detection().create({
 })
 ```
 
@@ -130,7 +130,9 @@ result = client.detection.create({
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.detection.list({})
+results = client.Detection().list({})
+for detection in results:
+    print(detection)
 ```
 
 ### Common Methods

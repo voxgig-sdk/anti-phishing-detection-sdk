@@ -208,13 +208,7 @@ class AntiPhishingDetectionSDK
   end
 
 
-  # Idiomatic facade: client.detection.list / client.detection.load({ "id" => ... })
-  def detection
-    require_relative 'entity/detection_entity'
-    @detection ||= DetectionEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.detection instead.
+  # Canonical facade: client.Detection.list / client.Detection.load({ "id" => ... })
   def Detection(data = nil)
     require_relative 'entity/detection_entity'
     DetectionEntity.new(self, data)

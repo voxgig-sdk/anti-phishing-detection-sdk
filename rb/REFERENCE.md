@@ -87,7 +87,7 @@ same parameters as `direct()`. Raises on error.
 ## DetectionEntity
 
 ```ruby
-detection = client.detection
+detection = client.Detection
 ```
 
 ### Fields
@@ -127,7 +127,7 @@ detection = client.detection
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.detection.create({
+result = client.Detection.create({
 })
 ```
 
@@ -136,7 +136,7 @@ result = client.detection.create({
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.detection.list(nil)
+results = client.Detection.list(nil)
 ```
 
 ### Common Methods

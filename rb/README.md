@@ -30,16 +30,14 @@ client = AntiPhishingDetectionSDK.new({
 })
 ```
 
-### 2. List detections
+### 2. List detection records
 
 ```ruby
 begin
-  result = client.detection.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Detection records — iterate directly.
+  detections = client.Detection.list
+  detections.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -49,8 +47,8 @@ end
 ### 4. Create, update, and remove
 
 ```ruby
-# Create
-created = client.detection.create({ "name" => "Example" })
+# create returns the bare created Detection record.
+created = client.Detection.create({ "name" => "Example" })
 
 ```
 
@@ -95,13 +93,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = AntiPhishingDetectionSDK.test
+client = AntiPhishingDetectionSDK.test({
+  "entity" => { "detection" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.detection.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+detection = client.Detection.load({ "id" => "test01" })
+puts detection
 ```
 
 ### Use a custom fetch function
@@ -244,7 +246,7 @@ API path: `/check`
 
 ### Detection
 
-Create an instance: `const detection = client.detection`
+Create an instance: `detection = client.Detection`
 
 #### Operations
 
@@ -270,14 +272,15 @@ Create an instance: `const detection = client.detection`
 
 #### Example: List
 
-```ts
-const detections = await client.detection.list()
+```ruby
+# list returns an Array of Detection records (raises on error).
+detections = client.Detection.list
 ```
 
 #### Example: Create
 
-```ts
-const detection = await client.detection.create({
+```ruby
+detection = client.Detection.create({
 })
 ```
 
@@ -353,7 +356,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-detection = client.detection
+detection = client.Detection
 detection.load({ "id" => "example_id" })
 
 # detection.data_get now returns the loaded detection data

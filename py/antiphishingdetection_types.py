@@ -4,51 +4,52 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Detection:
-    detail: Optional[str] = None
-    indicator: Optional[list] = None
-    is_phishing: Optional[bool] = None
-    recommendation: Optional[str] = None
-    resource: Optional[str] = None
-    scan_id: Optional[str] = None
-    score: Optional[float] = None
-    threat_level: Optional[str] = None
-    timestamp: Optional[str] = None
-    url: Optional[str] = None
+class Detection(TypedDict, total=False):
+    detail: str
+    indicator: list
+    is_phishing: bool
+    recommendation: str
+    resource: str
+    scan_id: str
+    score: float
+    threat_level: str
+    timestamp: str
+    url: str
 
 
-@dataclass
-class DetectionListMatch:
-    detail: Optional[str] = None
-    indicator: Optional[list] = None
-    is_phishing: Optional[bool] = None
-    recommendation: Optional[str] = None
-    resource: Optional[str] = None
-    scan_id: Optional[str] = None
-    score: Optional[float] = None
-    threat_level: Optional[str] = None
-    timestamp: Optional[str] = None
-    url: Optional[str] = None
+class DetectionListMatch(TypedDict, total=False):
+    detail: str
+    indicator: list
+    is_phishing: bool
+    recommendation: str
+    resource: str
+    scan_id: str
+    score: float
+    threat_level: str
+    timestamp: str
+    url: str
 
 
-@dataclass
-class DetectionCreateData:
-    detail: Optional[str] = None
-    indicator: Optional[list] = None
-    is_phishing: Optional[bool] = None
-    recommendation: Optional[str] = None
-    resource: Optional[str] = None
-    scan_id: Optional[str] = None
-    score: Optional[float] = None
-    threat_level: Optional[str] = None
-    timestamp: Optional[str] = None
-    url: Optional[str] = None
-
+class DetectionCreateData(TypedDict, total=False):
+    detail: str
+    indicator: list
+    is_phishing: bool
+    recommendation: str
+    resource: str
+    scan_id: str
+    score: float
+    threat_level: str
+    timestamp: str
+    url: str

@@ -86,7 +86,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## DetectionEntity
 
 ```php
-$detection = $client->detection();
+$detection = $client->Detection();
 ```
 
 ### Fields
@@ -126,7 +126,7 @@ $detection = $client->detection();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->detection()->create([
+$result = $client->Detection()->create([
 ]);
 ```
 
@@ -135,7 +135,7 @@ $result = $client->detection()->create([
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->detection()->list([]);
+$results = $client->Detection()->list([]);
 ```
 
 ### Common Methods

@@ -33,17 +33,17 @@ local client = sdk.new({
 })
 ```
 
-### 2. List detections
+### 2. List detection records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:detection():list()
+local detections, err = client:Detection():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(detections) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -51,7 +51,8 @@ end
 
 ```lua
 -- Create
-local created, _ = client:detection():create({ name = "Example" })
+local created, err = client:Detection():create({ name = "Example" })
+if err then error(err) end
 
 ```
 
@@ -98,8 +99,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:detection():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Detection():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -201,17 +202,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local detection, err = client:Detection():load({ id = "example_id" })
+    if err then error(err) end
+    -- detection is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -241,7 +247,7 @@ API path: `/check`
 
 ### Detection
 
-Create an instance: `const detection = client.detection`
+Create an instance: `local detection = client:Detection(nil)`
 
 #### Operations
 
@@ -267,14 +273,14 @@ Create an instance: `const detection = client.detection`
 
 #### Example: List
 
-```ts
-const detections = await client.detection.list()
+```lua
+local detections, err = client:Detection():list()
 ```
 
 #### Example: Create
 
-```ts
-const detection = await client.detection.create({
+```lua
+local detection, err = client:Detection():create({
 })
 ```
 
@@ -350,7 +356,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local detection = client:detection()
+local detection = client:Detection()
 detection:load({ id = "example_id" })
 
 -- detection:data_get() now returns the loaded detection data

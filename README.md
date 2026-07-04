@@ -28,9 +28,11 @@ const client = new AntiPhishingDetectionSDK({
   apikey: process.env.ANTI_PHISHING_DETECTION_APIKEY,
 })
 
-// List all detections
-const detections = await client.detection.list()
-console.log(detections.data)
+// List all detections (returns Detection[])
+const detections = await client.Detection().list()
+for (const detection of detections) {
+  console.log(detection)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -88,9 +90,10 @@ client = AntiPhishingDetectionSDK({
     "apikey": os.environ.get("ANTI_PHISHING_DETECTION_APIKEY"),
 })
 
-# List all detections
-detections = client.detection.list()
-print(detections)
+# List all detections (returns a list, raises on error)
+detections = client.Detection().list({})
+for detection in detections:
+    print(detection)
 ```
 
 ### PHP
@@ -103,8 +106,8 @@ $client = new AntiPhishingDetectionSDK([
     "apikey" => getenv("ANTI_PHISHING_DETECTION_APIKEY"),
 ]);
 
-// List all detections (throws on error)
-$detections = $client->detection()->list();
+// List all detections (returns an array; throws on error)
+$detections = $client->Detection()->list();
 print_r($detections);
 ```
 
@@ -131,8 +134,8 @@ client = AntiPhishingDetectionSDK.new({
   "apikey" => ENV["ANTI_PHISHING_DETECTION_APIKEY"],
 })
 
-# List all detections
-detections = client.detection.list
+# List all detections (returns an Array; raises on error)
+detections = client.Detection.list
 puts detections
 ```
 
@@ -146,7 +149,7 @@ local client = sdk.new({
 })
 
 -- List all detections
-local detections, err = client:detection():list()
+local detections, err = client:Detection():list()
 print(detections)
 ```
 
@@ -159,22 +162,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = AntiPhishingDetectionSDK.test()
-const result = await client.detection.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const detection = await client.Detection().load({ id: 'test01' })
+// detection is a bare Detection populated with mock data
+console.log(detection)
 ```
 
 ### Python
 
 ```python
 client = AntiPhishingDetectionSDK.test()
-result = client.detection.load({"id": "test01"})
+detection = client.Detection().load({"id": "test01"})
+print(detection)
 ```
 
 ### PHP
 
 ```php
-$client = AntiPhishingDetectionSDK::test();
-$result = $client->detection()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = AntiPhishingDetectionSDK::test([
+    "entity" => ["detection" => ["test01" => ["id" => "test01"]]],
+]);
+$detection = $client->Detection()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -189,15 +197,18 @@ result, err := client.Detection(nil).Load(
 ### Ruby
 
 ```ruby
-client = AntiPhishingDetectionSDK.test
-result = client.detection.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = AntiPhishingDetectionSDK.test({
+  "entity" => { "detection" => { "test01" => { "id" => "test01" } } },
+})
+detection = client.Detection.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:detection():load({ id = "test01" })
+local result, err = client:Detection():load({ id = "test01" })
 ```
 
 ## How it works
@@ -245,6 +256,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -34,14 +34,16 @@ client = AntiPhishingDetectionSDK({
 })
 ```
 
-### 2. List detections
+### 2. List detection records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.detection.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    detections = client.Detection().list({})
+    for detection in detections:
+        print(detection)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -49,8 +51,8 @@ except Exception as err:
 ### 4. Create, update, and remove
 
 ```python
-# Create
-created = client.detection.create({"name": "Example"})
+# Create — returns the bare created record (a dict)
+created = client.Detection().create({"name": "Example"})
 
 ```
 
@@ -97,8 +99,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AntiPhishingDetectionSDK.test()
 
-result = client.detection.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+detection = client.Detection().load({"id": "test01"})
+# detection contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -242,7 +245,7 @@ API path: `/check`
 
 ### Detection
 
-Create an instance: `const detection = client.detection`
+Create an instance: `detection = client.Detection()`
 
 #### Operations
 
@@ -268,14 +271,14 @@ Create an instance: `const detection = client.detection`
 
 #### Example: List
 
-```ts
-const detections = await client.detection.list()
+```python
+detections = client.Detection().list({})
 ```
 
 #### Example: Create
 
-```ts
-const detection = await client.detection.create({
+```python
+detection = client.Detection().create({
 })
 ```
 
@@ -350,7 +353,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-detection = client.detection
+detection = client.Detection()
 detection.load({"id": "example_id"})
 
 # detection.data_get() now returns the loaded detection data

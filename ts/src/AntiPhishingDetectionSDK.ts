@@ -204,14 +204,7 @@ class AntiPhishingDetectionSDK {
 
 
 
-  _detection?: DetectionEntity
-
-  // Idiomatic facade: `client.detection.list()` / `client.detection.load({ id })`.
-  get detection(): DetectionEntity {
-    return (this._detection ??= new DetectionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.detection` instead. */
+  // Entity access: `client.Detection().list()` / `client.Detection().load({ id })`.
   Detection(data?: any) {
     const self = this
     return new DetectionEntity(self,data)

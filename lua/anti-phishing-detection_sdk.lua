@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:detection():list() / client:detection():load({ id = ... })
-function AntiPhishingDetectionSDK:detection(data)
+-- Idiomatic facade: client:Detection():list() / client:Detection():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AntiPhishingDetectionSDK:Detection(data)
   local EntityMod = require("entity.detection_entity")
   if data == nil then
     if self._detection == nil then
@@ -253,12 +254,6 @@ function AntiPhishingDetectionSDK:detection(data)
     end
     return self._detection
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:detection() instead.
-function AntiPhishingDetectionSDK:Detection(data)
-  local EntityMod = require("entity.detection_entity")
   return EntityMod.new(self, data)
 end
 

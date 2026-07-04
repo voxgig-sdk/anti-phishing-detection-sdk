@@ -84,7 +84,7 @@ same parameters as `direct()`.
 ## DetectionEntity
 
 ```lua
-local detection = client:detection(nil)
+local detection = client:Detection(nil)
 ```
 
 ### Fields
@@ -124,7 +124,7 @@ local detection = client:detection(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:detection():create({
+local result, err = client:Detection():create({
 })
 ```
 
@@ -133,7 +133,7 @@ local result, err = client:detection():create({
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:detection():list()
+local results, err = client:Detection():list()
 ```
 
 ### Common Methods

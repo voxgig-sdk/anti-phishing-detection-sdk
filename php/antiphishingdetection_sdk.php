@@ -233,10 +233,10 @@ class AntiPhishingDetectionSDK
 
     private $_detection = null;
 
-    // Idiomatic facade: $client->detection()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Detection() (PHP method
-    // names are case-insensitive).
-    public function detection($data = null)
+    // Canonical facade: $client->Detection()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->detection()
+    // resolves here too.
+    public function Detection($data = null)
     {
         require_once __DIR__ . '/entity/detection_entity.php';
         if ($data === null) {

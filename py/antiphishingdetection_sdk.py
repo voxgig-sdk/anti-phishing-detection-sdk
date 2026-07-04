@@ -220,25 +220,15 @@ class AntiPhishingDetectionSDK:
         }
 
 
-    @property
-    def detection(self):
-        """Idiomatic facade: client.detection.list() / client.detection.load({"id": ...})."""
-        from entity.detection_entity import DetectionEntity
-        cached = getattr(self, "_detection", None)
-        if cached is None:
-            cached = DetectionEntity(self, None)
-            self._detection = cached
-        return cached
-
-    def Detection(self, data=None):
-        # Deprecated: use client.detection instead.
+    def Detection(self, data=None) -> "DetectionEntity":
+        """Entity factory: client.Detection().list({}) / client.Detection().load({"id": ...})."""
         from entity.detection_entity import DetectionEntity
         return DetectionEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "AntiPhishingDetectionSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class AntiPhishingDetectionSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.detection_entity import DetectionEntity

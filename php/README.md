@@ -31,18 +31,16 @@ $client = new AntiPhishingDetectionSDK([
 ]);
 ```
 
-### 2. List detections
+### 2. List detection records
 
 ```php
 try {
-    $result = $client->detection()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Detection records — iterate directly.
+    $detections = $client->Detection()->list();
+    foreach ($detections as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -50,8 +48,8 @@ try {
 ### 4. Create, update, and remove
 
 ```php
-// Create
-$created = $client->detection()->create(["name" => "Example"]);
+// create() returns the bare created Detection record.
+$created = $client->Detection()->create(["name" => "Example"]);
 
 ```
 
@@ -96,13 +94,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = AntiPhishingDetectionSDK::test();
+$client = AntiPhishingDetectionSDK::test([
+    "entity" => ["detection" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->detection()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$detection = $client->Detection()->load(["id" => "test01"]);
+print_r($detection);
 ```
 
 ### Use a custom fetch function
@@ -249,7 +251,7 @@ API path: `/check`
 
 ### Detection
 
-Create an instance: `const detection = client.detection`
+Create an instance: `$detection = $client->Detection();`
 
 #### Operations
 
@@ -275,15 +277,16 @@ Create an instance: `const detection = client.detection`
 
 #### Example: List
 
-```ts
-const detections = await client.detection.list()
+```php
+// list() returns an array of Detection records (throws on error).
+$detections = $client->Detection()->list();
 ```
 
 #### Example: Create
 
-```ts
-const detection = await client.detection.create({
-})
+```php
+$detection = $client->Detection()->create([
+]);
 ```
 
 
@@ -358,7 +361,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$detection = $client->detection();
+$detection = $client->Detection();
 $detection->load(["id" => "example_id"]);
 
 // $detection->dataGet() now returns the loaded detection data
