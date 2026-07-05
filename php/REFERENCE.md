@@ -8,7 +8,7 @@ Complete API reference for the AntiPhishingDetection PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/anti-phishing-detection_sdk.php';
+require_once __DIR__ . '/antiphishingdetection_sdk.php';
 
 $client = new AntiPhishingDetectionSDK($options);
 ```
@@ -46,11 +46,11 @@ $client = AntiPhishingDetectionSDK::test();
 
 Create a new `DetectionEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): AntiPhishingDetectionUtility`
 
 Return a copy of the SDK utility object.
 
@@ -93,31 +93,31 @@ $detection = $client->Detection();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `detail` | ``$STRING`` | No |  |
-| `indicator` | ``$ARRAY`` | No |  |
-| `is_phishing` | ``$BOOLEAN`` | No |  |
-| `recommendation` | ``$STRING`` | No |  |
-| `resource` | ``$STRING`` | No |  |
-| `scan_id` | ``$STRING`` | No |  |
-| `score` | ``$NUMBER`` | No |  |
-| `threat_level` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `detail` | `string` | No |  |
+| `indicator` | `array` | No |  |
+| `is_phishing` | `bool` | No |  |
+| `recommendation` | `string` | No |  |
+| `resource` | `string` | No |  |
+| `scan_id` | `string` | No |  |
+| `score` | `float` | No |  |
+| `threat_level` | `string` | No |  |
+| `timestamp` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `detail` | - | - | - | - | - |
-| `indicator` | - | - | - | - | - |
-| `is_phishing` | - | - | - | - | - |
-| `recommendation` | - | - | - | - | - |
-| `resource` | - | - | - | - | - |
-| `scan_id` | - | - | - | - | - |
-| `score` | - | - | - | - | - |
-| `threat_level` | - | - | - | - | - |
-| `timestamp` | - | - | - | - | - |
-| `url` | - | - | Yes | - | - |
+| Field | list | create |
+| --- | --- | --- |
+| `detail` | - | - |
+| `indicator` | - | - |
+| `is_phishing` | - | - |
+| `recommendation` | - | - |
+| `resource` | - | - |
+| `scan_id` | - | - |
+| `score` | - | - |
+| `threat_level` | - | - |
+| `timestamp` | - | - |
+| `url` | - | Yes |
 
 ### Operations
 
@@ -130,29 +130,29 @@ $result = $client->Detection()->create([
 ]);
 ```
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Detection()->list([]);
+$results = $client->Detection()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -161,7 +161,7 @@ Set the entity match criteria.
 Create a new `DetectionEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

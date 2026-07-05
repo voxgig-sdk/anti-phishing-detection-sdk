@@ -27,7 +27,7 @@ class Detection
     public ?string $url = null;
 }
 
-/** Match filter for Detection#list (any subset of Detection fields). */
+/** Request payload for Detection#list. */
 class DetectionListMatch
 {
     public ?string $detail = null;
@@ -42,7 +42,7 @@ class DetectionListMatch
     public ?string $url = null;
 }
 
-/** Match filter for Detection#create (any subset of Detection fields). */
+/** Request payload for Detection#create. */
 class DetectionCreateData
 {
     public ?string $detail = null;

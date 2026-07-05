@@ -18,7 +18,29 @@ export interface Detection {
   url?: string
 }
 
-export type DetectionListMatch = Partial<Detection>
+export interface DetectionListMatch {
+  detail?: string
+  indicator?: any[]
+  is_phishing?: boolean
+  recommendation?: string
+  resource?: string
+  scan_id?: string
+  score?: number
+  threat_level?: string
+  timestamp?: string
+  url?: string
+}
 
-export type DetectionCreateData = Partial<Detection>
+export interface DetectionCreateData {
+  detail?: string
+  indicator?: any[]
+  is_phishing?: boolean
+  recommendation?: string
+  resource?: string
+  scan_id?: string
+  score?: number
+  threat_level?: string
+  timestamp?: string
+  url?: string
+}
 

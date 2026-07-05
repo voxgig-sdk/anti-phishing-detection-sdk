@@ -19,8 +19,28 @@
 ---@field url? string
 
 ---@class DetectionListMatch
+---@field detail? string
+---@field indicator? table
+---@field is_phishing? boolean
+---@field recommendation? string
+---@field resource? string
+---@field scan_id? string
+---@field score? number
+---@field threat_level? string
+---@field timestamp? string
+---@field url? string
 
 ---@class DetectionCreateData
+---@field detail? string
+---@field indicator? table
+---@field is_phishing? boolean
+---@field recommendation? string
+---@field resource? string
+---@field scan_id? string
+---@field score? number
+---@field threat_level? string
+---@field timestamp? string
+---@field url? string
 
 local M = {}
 

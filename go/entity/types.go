@@ -22,8 +22,7 @@ type Detection struct {
 	Url *string `json:"url,omitempty"`
 }
 
-// DetectionListMatch mirrors the detection fields as an all-optional match
-// filter (Go analog of Partial<Detection>).
+// DetectionListMatch is the typed request payload for Detection.ListTyped.
 type DetectionListMatch struct {
 	Detail *string `json:"detail,omitempty"`
 	Indicator *[]any `json:"indicator,omitempty"`
@@ -37,8 +36,7 @@ type DetectionListMatch struct {
 	Url *string `json:"url,omitempty"`
 }
 
-// DetectionCreateData mirrors the detection fields as an all-optional match
-// filter (Go analog of Partial<Detection>).
+// DetectionCreateData is the typed request payload for Detection.CreateTyped.
 type DetectionCreateData struct {
 	Detail *string `json:"detail,omitempty"`
 	Indicator *[]any `json:"indicator,omitempty"`

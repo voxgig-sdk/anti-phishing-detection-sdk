@@ -8,7 +8,7 @@ Complete API reference for the AntiPhishingDetection Python SDK.
 ### Constructor
 
 ```python
-from anti-phishing-detection_sdk import AntiPhishingDetectionSDK
+from antiphishingdetection_sdk import AntiPhishingDetectionSDK
 
 client = AntiPhishingDetectionSDK(options)
 ```
@@ -88,31 +88,31 @@ detection = client.Detection()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `detail` | ``$STRING`` | No |  |
-| `indicator` | ``$ARRAY`` | No |  |
-| `is_phishing` | ``$BOOLEAN`` | No |  |
-| `recommendation` | ``$STRING`` | No |  |
-| `resource` | ``$STRING`` | No |  |
-| `scan_id` | ``$STRING`` | No |  |
-| `score` | ``$NUMBER`` | No |  |
-| `threat_level` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `detail` | `str` | No |  |
+| `indicator` | `list` | No |  |
+| `is_phishing` | `bool` | No |  |
+| `recommendation` | `str` | No |  |
+| `resource` | `str` | No |  |
+| `scan_id` | `str` | No |  |
+| `score` | `float` | No |  |
+| `threat_level` | `str` | No |  |
+| `timestamp` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `detail` | - | - | - | - | - |
-| `indicator` | - | - | - | - | - |
-| `is_phishing` | - | - | - | - | - |
-| `recommendation` | - | - | - | - | - |
-| `resource` | - | - | - | - | - |
-| `scan_id` | - | - | - | - | - |
-| `score` | - | - | - | - | - |
-| `threat_level` | - | - | - | - | - |
-| `timestamp` | - | - | - | - | - |
-| `url` | - | - | Yes | - | - |
+| Field | list | create |
+| --- | --- | --- |
+| `detail` | - | - |
+| `indicator` | - | - |
+| `is_phishing` | - | - |
+| `recommendation` | - | - |
+| `resource` | - | - |
+| `scan_id` | - | - |
+| `score` | - | - |
+| `threat_level` | - | - |
+| `timestamp` | - | - |
+| `url` | - | Yes |
 
 ### Operations
 
@@ -125,12 +125,12 @@ result = client.Detection().create({
 })
 ```
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Detection().list({})
+results = client.Detection().list()
 for detection in results:
     print(detection)
 ```

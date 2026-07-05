@@ -221,7 +221,7 @@ class AntiPhishingDetectionSDK:
 
 
     def Detection(self, data=None) -> "DetectionEntity":
-        """Entity factory: client.Detection().list({}) / client.Detection().load({"id": ...})."""
+        """Entity factory: client.Detection().list() / client.Detection().load({"id": ...})."""
         from entity.detection_entity import DetectionEntity
         return DetectionEntity(self, data)
 

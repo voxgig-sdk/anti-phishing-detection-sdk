@@ -8,7 +8,7 @@ Complete API reference for the AntiPhishingDetection Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'anti-phishing-detection_sdk'
+require_relative 'AntiPhishingDetection_sdk'
 
 client = AntiPhishingDetectionSDK.new(options)
 ```
@@ -94,31 +94,31 @@ detection = client.Detection
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `detail` | ``$STRING`` | No |  |
-| `indicator` | ``$ARRAY`` | No |  |
-| `is_phishing` | ``$BOOLEAN`` | No |  |
-| `recommendation` | ``$STRING`` | No |  |
-| `resource` | ``$STRING`` | No |  |
-| `scan_id` | ``$STRING`` | No |  |
-| `score` | ``$NUMBER`` | No |  |
-| `threat_level` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `detail` | `String` | No |  |
+| `indicator` | `Array` | No |  |
+| `is_phishing` | `Boolean` | No |  |
+| `recommendation` | `String` | No |  |
+| `resource` | `String` | No |  |
+| `scan_id` | `String` | No |  |
+| `score` | `Float` | No |  |
+| `threat_level` | `String` | No |  |
+| `timestamp` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `detail` | - | - | - | - | - |
-| `indicator` | - | - | - | - | - |
-| `is_phishing` | - | - | - | - | - |
-| `recommendation` | - | - | - | - | - |
-| `resource` | - | - | - | - | - |
-| `scan_id` | - | - | - | - | - |
-| `score` | - | - | - | - | - |
-| `threat_level` | - | - | - | - | - |
-| `timestamp` | - | - | - | - | - |
-| `url` | - | - | Yes | - | - |
+| Field | list | create |
+| --- | --- | --- |
+| `detail` | - | - |
+| `indicator` | - | - |
+| `is_phishing` | - | - |
+| `recommendation` | - | - |
+| `resource` | - | - |
+| `scan_id` | - | - |
+| `score` | - | - |
+| `threat_level` | - | - |
+| `timestamp` | - | - |
+| `url` | - | Yes |
 
 ### Operations
 
@@ -131,12 +131,12 @@ result = client.Detection.create({
 })
 ```
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Detection.list(nil)
+results = client.Detection.list
 ```
 
 ### Common Methods

@@ -91,31 +91,31 @@ local detection = client:Detection(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `detail` | ``$STRING`` | No |  |
-| `indicator` | ``$ARRAY`` | No |  |
-| `is_phishing` | ``$BOOLEAN`` | No |  |
-| `recommendation` | ``$STRING`` | No |  |
-| `resource` | ``$STRING`` | No |  |
-| `scan_id` | ``$STRING`` | No |  |
-| `score` | ``$NUMBER`` | No |  |
-| `threat_level` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `detail` | `string` | No |  |
+| `indicator` | `table` | No |  |
+| `is_phishing` | `boolean` | No |  |
+| `recommendation` | `string` | No |  |
+| `resource` | `string` | No |  |
+| `scan_id` | `string` | No |  |
+| `score` | `number` | No |  |
+| `threat_level` | `string` | No |  |
+| `timestamp` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `detail` | - | - | - | - | - |
-| `indicator` | - | - | - | - | - |
-| `is_phishing` | - | - | - | - | - |
-| `recommendation` | - | - | - | - | - |
-| `resource` | - | - | - | - | - |
-| `scan_id` | - | - | - | - | - |
-| `score` | - | - | - | - | - |
-| `threat_level` | - | - | - | - | - |
-| `timestamp` | - | - | - | - | - |
-| `url` | - | - | Yes | - | - |
+| Field | list | create |
+| --- | --- | --- |
+| `detail` | - | - |
+| `indicator` | - | - |
+| `is_phishing` | - | - |
+| `recommendation` | - | - |
+| `resource` | - | - |
+| `scan_id` | - | - |
+| `score` | - | - |
+| `threat_level` | - | - |
+| `timestamp` | - | - |
+| `url` | - | Yes |
 
 ### Operations
 

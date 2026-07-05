@@ -53,7 +53,7 @@ Detection = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Detection#list (any subset of Detection fields).
+# Request payload for Detection#list.
 #
 # @!attribute [rw] detail
 #   @return [String, nil]
@@ -98,7 +98,7 @@ DetectionListMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Detection#create (any subset of Detection fields).
+# Request payload for Detection#create.
 #
 # @!attribute [rw] detail
 #   @return [String, nil]
