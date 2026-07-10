@@ -57,7 +57,7 @@ except Exception as err:
 
 ```python
 # Create — returns the bare created record (a dict)
-created = client.Detection().create({"detail": "example", "indicator": []})
+created = client.Detection().create({"detail": "example_detail", "indicator": []})
 
 ```
 

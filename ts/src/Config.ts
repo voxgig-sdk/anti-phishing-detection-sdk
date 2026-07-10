@@ -39,7 +39,7 @@ class Config {
     base: 'https://api.fishfish.gg',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {

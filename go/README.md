@@ -63,7 +63,7 @@ func main() {
     }
 
     // Create a detection.
-    created, err := client.Detection(nil).Create(map[string]any{"detail": "example", "indicator": []any{}}, nil)
+    created, err := client.Detection(nil).Create(map[string]any{"detail": "example_detail", "indicator": []any{}}, nil)
     if err != nil {
         panic(err)
     }
@@ -302,8 +302,8 @@ Create an instance: `detection := client.Detection(nil)`
 
 | Method | Description |
 | --- | --- |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
 
 #### Fields
 
@@ -335,6 +335,10 @@ fmt.Println(detections) // the array of records
 ```go
 result, err := client.Detection(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 

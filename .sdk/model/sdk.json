@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -313,15 +310,25 @@
           "email": "contact@fishfish.gg"
         },
         "description": "FishFish is an automated service designed to quickly detect and mitigate phishing threats before they can be exploited for malicious purposes. It provides a streamlined solution for identifying harmful resources efficiently.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "X-API-Key",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.fishfish.gg"
           }
         ],
+        "summary": "FishFish is an automated service designed to quickly detect and mitigate phishing threats before they can be exploited for malicious purposes.",
         "termsOfService": "https://fishfish.gg/",
         "title": "Anti-Phishing Detection",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://fishfish.gg/"
       },
       "option": {},
       "target": {
@@ -374,6 +381,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -424,6 +434,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

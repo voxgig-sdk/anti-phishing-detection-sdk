@@ -53,7 +53,7 @@ end
 
 ```lua
 -- Create
-local created, err = client:Detection():create({ detail = "example", indicator = {} })
+local created, err = client:Detection():create({ detail = "example_detail", indicator = {} })
 if err then error(err) end
 
 ```

@@ -51,7 +51,7 @@ try {
 
 ```php
 // create() returns the bare created Detection record.
-$created = $client->Detection()->create(["detail" => "example", "indicator" => []]);
+$created = $client->Detection()->create(["detail" => "example_detail", "indicator" => []]);
 
 ```
 

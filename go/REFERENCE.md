@@ -92,6 +92,7 @@ same parameters as `Direct()`.
 
 ```go
 detection := client.Detection(nil)
+fmt.Println(detection.GetName()) // "detection"
 ```
 
 ### Fields
@@ -126,6 +127,18 @@ detection := client.Detection(nil)
 
 ### Operations
 
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.Detection(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
+```
+
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
 
 Create a new entity with the given data.
@@ -133,14 +146,10 @@ Create a new entity with the given data.
 ```go
 result, err := client.Detection(nil).Create(map[string]any{
 }, nil)
-```
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.Detection(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
