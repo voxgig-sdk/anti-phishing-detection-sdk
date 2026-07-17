@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- AntiPhishingDetection SDK exists test
 
 local sdk = require("anti-phishing-detection_sdk")
 
