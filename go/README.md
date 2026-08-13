@@ -63,7 +63,7 @@ func main() {
     }
 
     // Create a detection.
-    created, err := client.Detection(nil).Create(map[string]any{"detail": "example_detail", "indicator": []any{}}, nil)
+    created, err := client.Detection(nil).Create(map[string]any{"details": "example_details", "indicators": []any{}}, nil)
     if err != nil {
         panic(err)
     }
@@ -274,14 +274,14 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"detail"` |  |
-| `"indicator"` |  |
-| `"is_phishing"` |  |
+| `"details"` |  |
+| `"indicators"` |  |
+| `"isPhishing"` |  |
 | `"recommendation"` |  |
 | `"resource"` |  |
-| `"scan_id"` |  |
+| `"scanId"` |  |
 | `"score"` |  |
-| `"threat_level"` |  |
+| `"threatLevel"` |  |
 | `"timestamp"` |  |
 | `"url"` |  |
 
@@ -309,14 +309,14 @@ Create an instance: `detection := client.Detection(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `detail` | `string` |  |
-| `indicator` | `[]any` |  |
-| `is_phishing` | `bool` |  |
+| `details` | `string` |  |
+| `indicators` | `[]any` |  |
+| `isPhishing` | `bool` |  |
 | `recommendation` | `string` |  |
 | `resource` | `string` |  |
-| `scan_id` | `string` |  |
+| `scanId` | `string` |  |
 | `score` | `float64` |  |
-| `threat_level` | `string` |  |
+| `threatLevel` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 

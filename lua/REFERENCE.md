@@ -91,14 +91,14 @@ local detection = client:Detection(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `detail` | `string` | No |  |
-| `indicator` | `table` | No |  |
-| `is_phishing` | `boolean` | No |  |
+| `details` | `string` | No |  |
+| `indicators` | `table` | No |  |
+| `isPhishing` | `boolean` | No |  |
 | `recommendation` | `string` | No |  |
 | `resource` | `string` | No |  |
-| `scan_id` | `string` | No |  |
+| `scanId` | `string` | No |  |
 | `score` | `number` | No |  |
-| `threat_level` | `string` | No |  |
+| `threatLevel` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -106,14 +106,14 @@ local detection = client:Detection(nil)
 
 | Field | list | create |
 | --- | --- | --- |
-| `detail` | - | - |
-| `indicator` | - | - |
-| `is_phishing` | - | - |
+| `details` | - | - |
+| `indicators` | - | - |
+| `isPhishing` | - | - |
 | `recommendation` | - | - |
 | `resource` | - | - |
-| `scan_id` | - | - |
+| `scanId` | - | - |
 | `score` | - | - |
-| `threat_level` | - | - |
+| `threatLevel` | - | - |
 | `timestamp` | - | - |
 | `url` | - | Yes |
 

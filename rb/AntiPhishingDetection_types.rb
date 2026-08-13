@@ -10,13 +10,13 @@
 
 # Detection entity data model.
 #
-# @!attribute [rw] detail
+# @!attribute [rw] details
 #   @return [String, nil]
 #
-# @!attribute [rw] indicator
+# @!attribute [rw] indicators
 #   @return [Array, nil]
 #
-# @!attribute [rw] is_phishing
+# @!attribute [rw] isPhishing
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] recommendation
@@ -25,13 +25,13 @@
 # @!attribute [rw] resource
 #   @return [String, nil]
 #
-# @!attribute [rw] scan_id
+# @!attribute [rw] scanId
 #   @return [String, nil]
 #
 # @!attribute [rw] score
 #   @return [Float, nil]
 #
-# @!attribute [rw] threat_level
+# @!attribute [rw] threatLevel
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
@@ -40,14 +40,14 @@
 # @!attribute [rw] url
 #   @return [String, nil]
 Detection = Struct.new(
-  :detail,
-  :indicator,
-  :is_phishing,
+  :details,
+  :indicators,
+  :isPhishing,
   :recommendation,
   :resource,
-  :scan_id,
+  :scanId,
   :score,
-  :threat_level,
+  :threatLevel,
   :timestamp,
   :url,
   keyword_init: true
@@ -55,13 +55,13 @@ Detection = Struct.new(
 
 # Request payload for Detection#list.
 #
-# @!attribute [rw] detail
+# @!attribute [rw] details
 #   @return [String, nil]
 #
-# @!attribute [rw] indicator
+# @!attribute [rw] indicators
 #   @return [Array, nil]
 #
-# @!attribute [rw] is_phishing
+# @!attribute [rw] isPhishing
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] recommendation
@@ -70,13 +70,13 @@ Detection = Struct.new(
 # @!attribute [rw] resource
 #   @return [String, nil]
 #
-# @!attribute [rw] scan_id
+# @!attribute [rw] scanId
 #   @return [String, nil]
 #
 # @!attribute [rw] score
 #   @return [Float, nil]
 #
-# @!attribute [rw] threat_level
+# @!attribute [rw] threatLevel
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
@@ -85,14 +85,14 @@ Detection = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 DetectionListMatch = Struct.new(
-  :detail,
-  :indicator,
-  :is_phishing,
+  :details,
+  :indicators,
+  :isPhishing,
   :recommendation,
   :resource,
-  :scan_id,
+  :scanId,
   :score,
-  :threat_level,
+  :threatLevel,
   :timestamp,
   :url,
   keyword_init: true
@@ -100,13 +100,13 @@ DetectionListMatch = Struct.new(
 
 # Request payload for Detection#create.
 #
-# @!attribute [rw] detail
+# @!attribute [rw] details
 #   @return [String, nil]
 #
-# @!attribute [rw] indicator
+# @!attribute [rw] indicators
 #   @return [Array, nil]
 #
-# @!attribute [rw] is_phishing
+# @!attribute [rw] isPhishing
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] recommendation
@@ -115,13 +115,13 @@ DetectionListMatch = Struct.new(
 # @!attribute [rw] resource
 #   @return [String, nil]
 #
-# @!attribute [rw] scan_id
+# @!attribute [rw] scanId
 #   @return [String, nil]
 #
 # @!attribute [rw] score
 #   @return [Float, nil]
 #
-# @!attribute [rw] threat_level
+# @!attribute [rw] threatLevel
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
@@ -130,14 +130,14 @@ DetectionListMatch = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 DetectionCreateData = Struct.new(
-  :detail,
-  :indicator,
-  :is_phishing,
+  :details,
+  :indicators,
+  :isPhishing,
   :recommendation,
   :resource,
-  :scan_id,
+  :scanId,
   :score,
-  :threat_level,
+  :threatLevel,
   :timestamp,
   :url,
   keyword_init: true

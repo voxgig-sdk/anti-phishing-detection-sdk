@@ -94,14 +94,14 @@ detection = client.Detection
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `detail` | `String` | No |  |
-| `indicator` | `Array` | No |  |
-| `is_phishing` | `Boolean` | No |  |
+| `details` | `String` | No |  |
+| `indicators` | `Array` | No |  |
+| `isPhishing` | `Boolean` | No |  |
 | `recommendation` | `String` | No |  |
 | `resource` | `String` | No |  |
-| `scan_id` | `String` | No |  |
+| `scanId` | `String` | No |  |
 | `score` | `Float` | No |  |
-| `threat_level` | `String` | No |  |
+| `threatLevel` | `String` | No |  |
 | `timestamp` | `String` | No |  |
 | `url` | `String` | No |  |
 
@@ -109,14 +109,14 @@ detection = client.Detection
 
 | Field | list | create |
 | --- | --- | --- |
-| `detail` | - | - |
-| `indicator` | - | - |
-| `is_phishing` | - | - |
+| `details` | - | - |
+| `indicators` | - | - |
+| `isPhishing` | - | - |
 | `recommendation` | - | - |
 | `resource` | - | - |
-| `scan_id` | - | - |
+| `scanId` | - | - |
 | `score` | - | - |
-| `threat_level` | - | - |
+| `threatLevel` | - | - |
 | `timestamp` | - | - |
 | `url` | - | Yes |
 

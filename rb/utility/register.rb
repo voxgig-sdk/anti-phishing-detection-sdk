@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ AntiPhishingDetectionUtility.registrar = ->(u) {
   u.prepare_params = AntiPhishingDetectionUtilities::PrepareParams
   u.prepare_path = AntiPhishingDetectionUtilities::PreparePath
   u.prepare_query = AntiPhishingDetectionUtilities::PrepareQuery
+  u.graphql_body = AntiPhishingDetectionUtilities::GraphqlBody
+  u.graphql_errors = AntiPhishingDetectionUtilities::GraphqlErrors
   u.result_basic = AntiPhishingDetectionUtilities::ResultBasic
   u.result_body = AntiPhishingDetectionUtilities::ResultBody
   u.result_headers = AntiPhishingDetectionUtilities::ResultHeaders

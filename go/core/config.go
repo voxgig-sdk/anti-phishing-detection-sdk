@@ -29,21 +29,21 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "detail",
+						"name": "details",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "indicator",
+						"name": "indicators",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "is_phishing",
+						"name": "isPhishing",
 						"req": false,
 						"type": "`$BOOLEAN`",
 						"index$": 2,
@@ -64,7 +64,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "scan_id",
+						"name": "scanId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 5,
@@ -78,7 +78,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "threat_level",
+						"name": "threatLevel",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 7,
@@ -113,6 +113,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/check",
 								"parts": []any{
@@ -126,7 +127,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 					"list": map[string]any{
 						"input": "data",
@@ -162,6 +162,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/scan",
 								"parts": []any{
@@ -176,12 +177,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.indicators`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

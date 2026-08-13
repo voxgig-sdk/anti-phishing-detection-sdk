@@ -35,21 +35,21 @@ class AntiPhishingDetectionConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'detail',
+              'name' => 'details',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
             ],
             [
               'active' => true,
-              'name' => 'indicator',
+              'name' => 'indicators',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'is_phishing',
+              'name' => 'isPhishing',
               'req' => false,
               'type' => '`$BOOLEAN`',
               'index$' => 2,
@@ -70,7 +70,7 @@ class AntiPhishingDetectionConfig
             ],
             [
               'active' => true,
-              'name' => 'scan_id',
+              'name' => 'scanId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 5,
@@ -84,7 +84,7 @@ class AntiPhishingDetectionConfig
             ],
             [
               'active' => true,
-              'name' => 'threat_level',
+              'name' => 'threatLevel',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 7,
@@ -119,6 +119,7 @@ class AntiPhishingDetectionConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/check',
                   'parts' => [
@@ -168,6 +169,7 @@ class AntiPhishingDetectionConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/scan',
                   'parts' => [
@@ -182,7 +184,7 @@ class AntiPhishingDetectionConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.indicators`',
                   ],
                   'index$' => 0,
                 ],

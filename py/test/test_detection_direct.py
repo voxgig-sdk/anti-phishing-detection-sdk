@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from antiphishingdetection_sdk.utility.voxgig_struct import voxgig_struct as vs
 from antiphishingdetection_sdk import AntiPhishingDetectionSDK
-from core import helpers
+from antiphishingdetection_sdk.core import helpers
 from test import runner
 
 
@@ -58,16 +58,16 @@ def _detection_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ANTIPHISHINGDETECTION_TEST_DETECTION_ENTID": {},
-        "ANTIPHISHINGDETECTION_TEST_LIVE": "FALSE",
-        "ANTIPHISHINGDETECTION_APIKEY": "NONE",
+        "ANTI_PHISHING_DETECTION_TEST_DETECTION_ENTID": {},
+        "ANTI_PHISHING_DETECTION_TEST_LIVE": "FALSE",
+        "ANTI_PHISHING_DETECTION_APIKEY": "NONE",
     })
 
-    live = env.get("ANTIPHISHINGDETECTION_TEST_LIVE") == "TRUE"
+    live = env.get("ANTI_PHISHING_DETECTION_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("ANTIPHISHINGDETECTION_APIKEY"),
+            "apikey": env.get("ANTI_PHISHING_DETECTION_APIKEY"),
         }
         client = AntiPhishingDetectionSDK(merged_opts)
         return {

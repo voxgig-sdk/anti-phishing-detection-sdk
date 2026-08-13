@@ -39,7 +39,7 @@ begin
   # list returns an Array of Detection records — iterate directly.
   detections = client.Detection.list
   detections.each do |item|
-    puts "#{item["detail"]}"
+    puts "#{item["details"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -49,8 +49,8 @@ end
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created Detection record.
-created = client.Detection.create({ "detail" => "example_detail", "indicator" => [] })
+# create returns the ENTITY — call data_get for the created Detection record.
+created = client.Detection.create({ "details" => "example_details", "indicators" => [] })
 
 ```
 
@@ -129,7 +129,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = AntiPhishingDetectionSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 detection = client.Detection.list()
 puts detection
 ```
@@ -249,14 +250,14 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `detail` |  |
-| `indicator` |  |
-| `is_phishing` |  |
+| `details` |  |
+| `indicators` |  |
+| `isPhishing` |  |
 | `recommendation` |  |
 | `resource` |  |
-| `scan_id` |  |
+| `scanId` |  |
 | `score` |  |
-| `threat_level` |  |
+| `threatLevel` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -284,14 +285,14 @@ Create an instance: `detection = client.Detection`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `detail` | `String` |  |
-| `indicator` | `Array` |  |
-| `is_phishing` | `Boolean` |  |
+| `details` | `String` |  |
+| `indicators` | `Array` |  |
+| `isPhishing` | `Boolean` |  |
 | `recommendation` | `String` |  |
 | `resource` | `String` |  |
-| `scan_id` | `String` |  |
+| `scanId` | `String` |  |
 | `score` | `Float` |  |
-| `threat_level` | `String` |  |
+| `threatLevel` | `String` |  |
 | `timestamp` | `String` |  |
 | `url` | `String` |  |
 

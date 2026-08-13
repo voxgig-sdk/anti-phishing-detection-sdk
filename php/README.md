@@ -40,7 +40,7 @@ try {
     // list() returns an array of Detection records — iterate directly.
     $detections = $client->Detection()->list();
     foreach ($detections as $item) {
-        echo $item["detail"] . "\n";
+        echo $item["details"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -50,8 +50,8 @@ try {
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created Detection record.
-$created = $client->Detection()->create(["detail" => "example_detail", "indicator" => []]);
+// create() returns the ENTITY — call data_get() for the created Detection record.
+$created = $client->Detection()->create(["details" => "example_details", "indicators" => []]);
 
 ```
 
@@ -135,7 +135,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = AntiPhishingDetectionSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $detection = $client->Detection()->list();
 print_r($detection);
 ```
@@ -237,7 +238,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -259,14 +260,14 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `detail` |  |
-| `indicator` |  |
-| `is_phishing` |  |
+| `details` |  |
+| `indicators` |  |
+| `isPhishing` |  |
 | `recommendation` |  |
 | `resource` |  |
-| `scan_id` |  |
+| `scanId` |  |
 | `score` |  |
-| `threat_level` |  |
+| `threatLevel` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -294,14 +295,14 @@ Create an instance: `$detection = $client->Detection();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `detail` | `string` |  |
-| `indicator` | `array` |  |
-| `is_phishing` | `bool` |  |
+| `details` | `string` |  |
+| `indicators` | `array` |  |
+| `isPhishing` | `bool` |  |
 | `recommendation` | `string` |  |
 | `resource` | `string` |  |
-| `scan_id` | `string` |  |
+| `scanId` | `string` |  |
 | `score` | `float` |  |
-| `threat_level` | `string` |  |
+| `threatLevel` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 

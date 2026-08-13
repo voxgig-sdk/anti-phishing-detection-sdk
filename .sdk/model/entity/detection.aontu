@@ -6,17 +6,17 @@ main: kit: entity: detection: {
 
   fields: [
     {
-      name: "detail"
+      name: "details"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "indicator"
+      name: "indicators"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "is_phishing"
+      name: "isPhishing"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: detection: {
       type: "`$STRING`"
     }
     {
-      name: "scan_id"
+      name: "scanId"
       req: false
       type: "`$STRING`"
     }
@@ -41,7 +41,7 @@ main: kit: entity: detection: {
       type: "`$NUMBER`"
     }
     {
-      name: "threat_level"
+      name: "threatLevel"
       req: false
       type: "`$STRING`"
     }
@@ -124,7 +124,7 @@ main: kit: entity: detection: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.indicators`"
           }
         }
       ]

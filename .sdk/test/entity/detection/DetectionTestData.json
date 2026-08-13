@@ -2,40 +2,40 @@
   "existing": {
     "detection": {
       "DETECTION00": {
-        "detail": "s64",
-        "indicator": [],
-        "is_phishing": true,
+        "details": "s64",
+        "indicators": [],
+        "isPhishing": true,
         "recommendation": "s67",
         "resource": "s68",
-        "scan_id": "SCAN01",
+        "scanId": "s69",
         "score": 106,
-        "threat_level": "s6b",
+        "threatLevel": "s6b",
         "timestamp": "s6c",
         "url": "s6d",
         "id": "DETECTION00"
       },
       "DETECTION01": {
-        "detail": "sc8",
-        "indicator": [],
-        "is_phishing": true,
+        "details": "sc8",
+        "indicators": [],
+        "isPhishing": true,
         "recommendation": "scb",
         "resource": "scc",
-        "scan_id": "SCAN01",
+        "scanId": "scd",
         "score": 206,
-        "threat_level": "scf",
+        "threatLevel": "scf",
         "timestamp": "sd0",
         "url": "sd1",
         "id": "DETECTION01"
       },
       "DETECTION02": {
-        "detail": "s12c",
-        "indicator": [],
-        "is_phishing": true,
+        "details": "s12c",
+        "indicators": [],
+        "isPhishing": true,
         "recommendation": "s12f",
         "resource": "s130",
-        "scan_id": "SCAN01",
+        "scanId": "s131",
         "score": 306,
-        "threat_level": "s133",
+        "threatLevel": "s133",
         "timestamp": "s134",
         "url": "s135",
         "id": "DETECTION02"
@@ -45,14 +45,14 @@
   "new": {
     "detection": {
       "detection_ref01": {
-        "detail": "s190",
-        "indicator": [],
-        "is_phishing": true,
+        "details": "s190",
+        "indicators": [],
+        "isPhishing": true,
         "recommendation": "s193",
         "resource": "s194",
-        "scan_id": "SCAN01",
+        "scanId": "s195",
         "score": 406,
-        "threat_level": "s197",
+        "threatLevel": "s197",
         "timestamp": "s198",
         "url": "s199"
       }

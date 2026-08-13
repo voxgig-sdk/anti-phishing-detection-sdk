@@ -45,7 +45,7 @@ local detections, err = client:Detection():list()
 if err then error(err) end
 
 for _, item in ipairs(detections) do
-  print(item["detail"])
+  print(item["details"])
 end
 ```
 
@@ -53,7 +53,7 @@ end
 
 ```lua
 -- Create
-local created, err = client:Detection():create({ detail = "example_detail", indicator = {} })
+local created, err = client:Detection():create({ details = "example_details", indicators = {} })
 if err then error(err) end
 
 ```
@@ -233,9 +233,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local detection, err = client:Detection():load()
+    local detection, err = client:Detection():list()
     if err then error(err) end
-    -- detection is the loaded record
+    -- detection is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -246,14 +246,14 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `detail` |  |
-| `indicator` |  |
-| `is_phishing` |  |
+| `details` |  |
+| `indicators` |  |
+| `isPhishing` |  |
 | `recommendation` |  |
 | `resource` |  |
-| `scan_id` |  |
+| `scanId` |  |
 | `score` |  |
-| `threat_level` |  |
+| `threatLevel` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -281,14 +281,14 @@ Create an instance: `local detection = client:Detection(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `detail` | `string` |  |
-| `indicator` | `table` |  |
-| `is_phishing` | `boolean` |  |
+| `details` | `string` |  |
+| `indicators` | `table` |  |
+| `isPhishing` | `boolean` |  |
 | `recommendation` | `string` |  |
 | `resource` | `string` |  |
-| `scan_id` | `string` |  |
+| `scanId` | `string` |  |
 | `score` | `number` |  |
-| `threat_level` | `string` |  |
+| `threatLevel` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 

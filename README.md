@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = AntiPhishingDetectionSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = AntiPhishingDetectionSDK.test({
+  entity: {
+    detection: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const detections = await client.Detection().list()
-// detections is an array of bare Detection records populated with mock data
+// detections is an array of Detection entities, populated with mock data
+// — call detections[0].data() for the record itself
 console.log(detections)
 ```
 
@@ -112,7 +121,7 @@ const client = new AntiPhishingDetectionSDK({
   apikey: process.env.ANTI_PHISHING_DETECTION_APIKEY,
 })
 
-// List all detections (returns Detection[])
+// List all detections (returns DetectionEntity[] — .data() for the record)
 const detections = await client.Detection().list()
 for (const detection of detections) {
   console.log(detection)
@@ -157,7 +166,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Detection** | The Detection entity (create, list). | `/check` |
+| **Detection** | The Detection entity (create, list). | `/scan` |
 
 The operations available across these entities are **list**, **create** — see each entity's
 own list above for exactly which it supports.
@@ -356,6 +365,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api.fishfish.gg](https://api.fishfish.gg)
 

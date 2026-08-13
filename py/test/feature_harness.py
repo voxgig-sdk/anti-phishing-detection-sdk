@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import AntiPhishingDetectionControl
-from core.error import AntiPhishingDetectionError
-from core.result import AntiPhishingDetectionResult
-from core.spec import AntiPhishingDetectionSpec
+from antiphishingdetection_sdk.config import make_config
+from antiphishingdetection_sdk.features import _make_feature
+from antiphishingdetection_sdk.core.control import AntiPhishingDetectionControl
+from antiphishingdetection_sdk.core.error import AntiPhishingDetectionError
+from antiphishingdetection_sdk.core.result import AntiPhishingDetectionResult
+from antiphishingdetection_sdk.core.spec import AntiPhishingDetectionSpec
 
 
 # True when this SDK was generated with the named feature.

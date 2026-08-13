@@ -16,11 +16,11 @@
 import pytest
 
 from antiphishingdetection_sdk import AntiPhishingDetectionSDK
-from core.error import AntiPhishingDetectionError
-from core.result import AntiPhishingDetectionResult
-from core.response import AntiPhishingDetectionResponse
-from core.spec import AntiPhishingDetectionSpec
-from feature.base_feature import AntiPhishingDetectionBaseFeature
+from antiphishingdetection_sdk.core.error import AntiPhishingDetectionError
+from antiphishingdetection_sdk.core.result import AntiPhishingDetectionResult
+from antiphishingdetection_sdk.core.response import AntiPhishingDetectionResponse
+from antiphishingdetection_sdk.core.spec import AntiPhishingDetectionSpec
+from antiphishingdetection_sdk.feature.base_feature import AntiPhishingDetectionBaseFeature
 
 
 def _client():

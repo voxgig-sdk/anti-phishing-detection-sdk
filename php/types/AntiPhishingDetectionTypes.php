@@ -15,14 +15,14 @@ declare(strict_types=1);
 /** Detection entity data model. */
 class Detection
 {
-    public ?string $detail = null;
-    public ?array $indicator = null;
-    public ?bool $is_phishing = null;
+    public ?string $details = null;
+    public ?array $indicators = null;
+    public ?bool $isPhishing = null;
     public ?string $recommendation = null;
     public ?string $resource = null;
-    public ?string $scan_id = null;
+    public ?string $scanId = null;
     public ?float $score = null;
-    public ?string $threat_level = null;
+    public ?string $threatLevel = null;
     public ?string $timestamp = null;
     public ?string $url = null;
 }
@@ -30,14 +30,14 @@ class Detection
 /** Request payload for Detection#list. */
 class DetectionListMatch
 {
-    public ?string $detail = null;
-    public ?array $indicator = null;
-    public ?bool $is_phishing = null;
+    public ?string $details = null;
+    public ?array $indicators = null;
+    public ?bool $isPhishing = null;
     public ?string $recommendation = null;
     public ?string $resource = null;
-    public ?string $scan_id = null;
+    public ?string $scanId = null;
     public ?float $score = null;
-    public ?string $threat_level = null;
+    public ?string $threatLevel = null;
     public ?string $timestamp = null;
     public ?string $url = null;
 }
@@ -45,14 +45,14 @@ class DetectionListMatch
 /** Request payload for Detection#create. */
 class DetectionCreateData
 {
-    public ?string $detail = null;
-    public ?array $indicator = null;
-    public ?bool $is_phishing = null;
+    public ?string $details = null;
+    public ?array $indicators = null;
+    public ?bool $isPhishing = null;
     public ?string $recommendation = null;
     public ?string $resource = null;
-    public ?string $scan_id = null;
+    public ?string $scanId = null;
     public ?float $score = null;
-    public ?string $threat_level = null;
+    public ?string $threatLevel = null;
     public ?string $timestamp = null;
     public ?string $url = null;
 }

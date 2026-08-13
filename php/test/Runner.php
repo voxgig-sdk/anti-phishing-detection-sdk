@@ -43,8 +43,8 @@ class AntiPhishingDetectionTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('ANTIPHISHINGDETECTION_TEST_LIVE');
-        $override = self::getenv('ANTIPHISHINGDETECTION_TEST_OVERRIDE');
+        $live = self::getenv('ANTI_PHISHING_DETECTION_TEST_LIVE');
+        $override = self::getenv('ANTI_PHISHING_DETECTION_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class AntiPhishingDetectionTestRunner
             }
         }
 
-        $explain = self::getenv('ANTIPHISHINGDETECTION_TEST_EXPLAIN');
+        $explain = self::getenv('ANTI_PHISHING_DETECTION_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['ANTIPHISHINGDETECTION_TEST_EXPLAIN'] = $explain;
+            $m['ANTI_PHISHING_DETECTION_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

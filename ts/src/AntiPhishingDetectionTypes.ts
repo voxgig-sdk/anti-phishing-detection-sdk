@@ -6,40 +6,40 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Detection {
-  detail?: string
-  indicator?: any[]
-  is_phishing?: boolean
+  details?: string
+  indicators?: any[]
+  isPhishing?: boolean
   recommendation?: string
   resource?: string
-  scan_id?: string
+  scanId?: string
   score?: number
-  threat_level?: string
+  threatLevel?: string
   timestamp?: string
   url?: string
 }
 
 export interface DetectionListMatch {
-  detail?: string
-  indicator?: any[]
-  is_phishing?: boolean
+  details?: string
+  indicators?: any[]
+  isPhishing?: boolean
   recommendation?: string
   resource?: string
-  scan_id?: string
+  scanId?: string
   score?: number
-  threat_level?: string
+  threatLevel?: string
   timestamp?: string
   url?: string
 }
 
 export interface DetectionCreateData {
-  detail?: string
-  indicator?: any[]
-  is_phishing?: boolean
+  details?: string
+  indicators?: any[]
+  isPhishing?: boolean
   recommendation?: string
   resource?: string
-  scan_id?: string
+  scanId?: string
   score?: number
-  threat_level?: string
+  threatLevel?: string
   timestamp?: string
   url?: string
 }

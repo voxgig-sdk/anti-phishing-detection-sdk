@@ -37,7 +37,9 @@ const client = new AntiPhishingDetectionSDK({
 
 ### 2. List detection records
 
-`list()` resolves to an array of Detection objects — iterate it directly:
+`list()` resolves to an array of Detection ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const detections = await client.Detection().list()
@@ -50,10 +52,10 @@ for (const detection of detections) {
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created Detection
+// Create — returns the created Detection ENTITY (.data() for the record)
 const created = await client.Detection().create({
-  detail: 'example_detail',
-  indicator: [],
+  details: 'example_details',
+  indicators: [],
 })
 
 ```
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = AntiPhishingDetectionSDK.test()
 
 const detection = await client.Detection().list()
-// detection is a bare entity populated with mock response data
+// detection is the entity, populated with mock response data
+// — call detection.data() for the record itself
 console.log(detection)
 ```
 
@@ -303,14 +306,14 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `detail` |  |
-| `indicator` |  |
-| `is_phishing` |  |
+| `details` |  |
+| `indicators` |  |
+| `isPhishing` |  |
 | `recommendation` |  |
 | `resource` |  |
-| `scan_id` |  |
+| `scanId` |  |
 | `score` |  |
-| `threat_level` |  |
+| `threatLevel` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -338,14 +341,14 @@ Create an instance: `const detection = client.Detection()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `detail` | `string` |  |
-| `indicator` | `any[]` |  |
-| `is_phishing` | `boolean` |  |
+| `details` | `string` |  |
+| `indicators` | `any[]` |  |
+| `isPhishing` | `boolean` |  |
 | `recommendation` | `string` |  |
 | `resource` | `string` |  |
-| `scan_id` | `string` |  |
+| `scanId` | `string` |  |
 | `score` | `number` |  |
-| `threat_level` | `string` |  |
+| `threatLevel` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 

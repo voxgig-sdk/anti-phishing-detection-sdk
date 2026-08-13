@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# AntiPhishingDetection SDK exists test
 
 import pytest
 from antiphishingdetection_sdk import AntiPhishingDetectionSDK

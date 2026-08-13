@@ -29,21 +29,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "detail",
+            ["name"] = "details",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "indicator",
+            ["name"] = "indicators",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "is_phishing",
+            ["name"] = "isPhishing",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 2,
@@ -64,7 +64,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "scan_id",
+            ["name"] = "scanId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
@@ -78,7 +78,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "threat_level",
+            ["name"] = "threatLevel",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 7,
@@ -113,6 +113,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/check",
                 ["parts"] = {
@@ -162,6 +163,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/scan",
                 ["parts"] = {
@@ -176,7 +178,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.indicators`",
                 },
                 ["index$"] = 0,
               },

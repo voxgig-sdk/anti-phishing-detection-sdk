@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.ANTIPHISHINGDETECTION_TEST_LIVE ||
-    'TRUE' === process.env.ANTIPHISHINGDETECTION_TEST_OVERRIDE
+    'TRUE' === process.env.ANTI_PHISHING_DETECTION_TEST_LIVE ||
+    'TRUE' === process.env.ANTI_PHISHING_DETECTION_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.ANTIPHISHINGDETECTION_TEST_EXPLAIN = process.env.ANTIPHISHINGDETECTION_TEST_EXPLAIN || m.ANTIPHISHINGDETECTION_TEST_EXPLAIN
+  m.ANTI_PHISHING_DETECTION_TEST_EXPLAIN = process.env.ANTI_PHISHING_DETECTION_TEST_EXPLAIN || m.ANTI_PHISHING_DETECTION_TEST_EXPLAIN
 
   return m
 }

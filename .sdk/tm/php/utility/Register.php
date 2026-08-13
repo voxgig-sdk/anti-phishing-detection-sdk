@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ AntiPhishingDetectionUtility::setRegistrar(function (AntiPhishingDetectionUtilit
     $u->prepare_params = [AntiPhishingDetectionPrepareParams::class, 'call'];
     $u->prepare_path = [AntiPhishingDetectionPreparePath::class, 'call'];
     $u->prepare_query = [AntiPhishingDetectionPrepareQuery::class, 'call'];
+    $u->graphql_body = [AntiPhishingDetectionGraphql::class, 'body'];
+    $u->graphql_errors = [AntiPhishingDetectionGraphql::class, 'errors'];
     $u->result_basic = [AntiPhishingDetectionResultBasic::class, 'call'];
     $u->result_body = [AntiPhishingDetectionResultBody::class, 'call'];
     $u->result_headers = [AntiPhishingDetectionResultHeaders::class, 'call'];

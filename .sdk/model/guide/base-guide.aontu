@@ -11,6 +11,7 @@ guide: {
     }
     path: "/scan": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.indicators`")|top
     }
   }
 

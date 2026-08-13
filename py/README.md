@@ -56,8 +56,8 @@ except Exception as err:
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
-created = client.Detection().create({"detail": "example_detail", "indicator": []})
+# Create — returns the ENTITY (call data_get() for the record)
+created = client.Detection().create({"details": "example_details", "indicators": []})
 
 ```
 
@@ -135,7 +135,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AntiPhishingDetectionSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 detection = client.Detection().list()
 # detection contains the mock response record
 ```
@@ -234,7 +235,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -256,14 +257,14 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `detail` |  |
-| `indicator` |  |
-| `is_phishing` |  |
+| `details` |  |
+| `indicators` |  |
+| `isPhishing` |  |
 | `recommendation` |  |
 | `resource` |  |
-| `scan_id` |  |
+| `scanId` |  |
 | `score` |  |
-| `threat_level` |  |
+| `threatLevel` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -291,14 +292,14 @@ Create an instance: `detection = client.Detection()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `detail` | `str` |  |
-| `indicator` | `list` |  |
-| `is_phishing` | `bool` |  |
+| `details` | `str` |  |
+| `indicators` | `list` |  |
+| `isPhishing` | `bool` |  |
 | `recommendation` | `str` |  |
 | `resource` | `str` |  |
-| `scan_id` | `str` |  |
+| `scanId` | `str` |  |
 | `score` | `float` |  |
-| `threat_level` | `str` |  |
+| `threatLevel` | `str` |  |
 | `timestamp` | `str` |  |
 | `url` | `str` |  |
 

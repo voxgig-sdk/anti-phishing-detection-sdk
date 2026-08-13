@@ -99,14 +99,14 @@ fmt.Println(detection.GetName()) // "detection"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `detail` | `string` | No |  |
-| `indicator` | `[]any` | No |  |
-| `is_phishing` | `bool` | No |  |
+| `details` | `string` | No |  |
+| `indicators` | `[]any` | No |  |
+| `isPhishing` | `bool` | No |  |
 | `recommendation` | `string` | No |  |
 | `resource` | `string` | No |  |
-| `scan_id` | `string` | No |  |
+| `scanId` | `string` | No |  |
 | `score` | `float64` | No |  |
-| `threat_level` | `string` | No |  |
+| `threatLevel` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -114,14 +114,14 @@ fmt.Println(detection.GetName()) // "detection"
 
 | Field | list | create |
 | --- | --- | --- |
-| `detail` | - | - |
-| `indicator` | - | - |
-| `is_phishing` | - | - |
+| `details` | - | - |
+| `indicators` | - | - |
+| `isPhishing` | - | - |
 | `recommendation` | - | - |
 | `resource` | - | - |
-| `scan_id` | - | - |
+| `scanId` | - | - |
 | `score` | - | - |
-| `threat_level` | - | - |
+| `threatLevel` | - | - |
 | `timestamp` | - | - |
 | `url` | - | Yes |
 

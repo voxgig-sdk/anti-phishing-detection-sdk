@@ -7,38 +7,38 @@
 -- edit by hand.
 
 ---@class Detection
----@field detail? string
----@field indicator? table
----@field is_phishing? boolean
+---@field details? string
+---@field indicators? table
+---@field isPhishing? boolean
 ---@field recommendation? string
 ---@field resource? string
----@field scan_id? string
+---@field scanId? string
 ---@field score? number
----@field threat_level? string
+---@field threatLevel? string
 ---@field timestamp? string
 ---@field url? string
 
 ---@class DetectionListMatch
----@field detail? string
----@field indicator? table
----@field is_phishing? boolean
+---@field details? string
+---@field indicators? table
+---@field isPhishing? boolean
 ---@field recommendation? string
 ---@field resource? string
----@field scan_id? string
+---@field scanId? string
 ---@field score? number
----@field threat_level? string
+---@field threatLevel? string
 ---@field timestamp? string
 ---@field url? string
 
 ---@class DetectionCreateData
----@field detail? string
----@field indicator? table
----@field is_phishing? boolean
+---@field details? string
+---@field indicators? table
+---@field isPhishing? boolean
 ---@field recommendation? string
 ---@field resource? string
----@field scan_id? string
+---@field scanId? string
 ---@field score? number
----@field threat_level? string
+---@field threatLevel? string
 ---@field timestamp? string
 ---@field url? string
 

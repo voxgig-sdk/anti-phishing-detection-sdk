@@ -23,8 +23,8 @@ module AntiPhishingDetectionTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ANTIPHISHINGDETECTION_TEST_LIVE")
-    override = getenv("ANTIPHISHINGDETECTION_TEST_OVERRIDE")
+    live = getenv("ANTI_PHISHING_DETECTION_TEST_LIVE")
+    override = getenv("ANTI_PHISHING_DETECTION_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module AntiPhishingDetectionTestRunner
       end
     end
 
-    explain = getenv("ANTIPHISHINGDETECTION_TEST_EXPLAIN")
-    m["ANTIPHISHINGDETECTION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ANTI_PHISHING_DETECTION_TEST_EXPLAIN")
+    m["ANTI_PHISHING_DETECTION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end
