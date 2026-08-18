@@ -1,6 +1,20 @@
 # AntiPhishingDetection SDK configuration
 
 module AntiPhishingDetectionConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -29,70 +43,42 @@ module AntiPhishingDetectionConfig
         "detection" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "details",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "indicators",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "isPhishing",
-              "req" => false,
               "type" => "`$BOOLEAN`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "recommendation",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "resource",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "scanId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "score",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 6,
             },
             {
-              "active" => true,
               "name" => "threatLevel",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 7,
             },
             {
-              "active" => true,
               "name" => "timestamp",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 8,
             },
             {
-              "active" => true,
               "name" => "url",
               "op" => {
                 "create" => {
@@ -100,9 +86,7 @@ module AntiPhishingDetectionConfig
                   "type" => "`$STRING`",
                 },
               },
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 9,
             },
           ],
           "name" => "detection",
@@ -112,7 +96,6 @@ module AntiPhishingDetectionConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -125,41 +108,32 @@ module AntiPhishingDetectionConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
             "list" => {
               "input" => "data",
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "domain",
                         "orig" => "domain",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "scan_id",
                         "orig" => "scan_id",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "url",
                         "orig" => "url",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -181,10 +155,8 @@ module AntiPhishingDetectionConfig
                     "req" => "`reqdata`",
                     "res" => "`body.indicators`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {

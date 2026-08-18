@@ -28,7 +28,7 @@ class AntiPhishingDetectionSDK
     utility = AntiPhishingDetectionUtility.new
     @_utility = utility
 
-    config = AntiPhishingDetectionConfig.make_config
+    config = AntiPhishingDetectionConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://api.fishfish.gg',
+    base: "https://api.fishfish.gg",
 
     auth: {
       prefix: '',
@@ -59,70 +59,42 @@ class Config {
     "detection": {
       "fields": [
         {
-          "active": true,
           "name": "details",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "indicators",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "isPhishing",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 2
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "recommendation",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "resource",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "scanId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "score",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 6
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "threatLevel",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "timestamp",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "url",
           "op": {
             "create": {
@@ -130,9 +102,7 @@ class Config {
               "type": "`$STRING`"
             }
           },
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         }
       ],
       "name": "detection",
@@ -142,7 +112,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -154,42 +123,33 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "domain",
                     "orig": "domain",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "scan_id",
                     "orig": "scan_id",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "url",
                     "orig": "url",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -210,11 +170,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.indicators`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {

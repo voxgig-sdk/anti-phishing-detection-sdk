@@ -40,7 +40,7 @@ class AntiPhishingDetectionSDK
         $utility = new AntiPhishingDetectionUtility();
         $this->_utility = $utility;
 
-        $config = AntiPhishingDetectionConfig::make_config();
+        $config = AntiPhishingDetectionConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

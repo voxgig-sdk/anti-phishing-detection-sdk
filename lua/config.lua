@@ -1,5 +1,8 @@
 -- AntiPhishingDetection SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -28,70 +31,42 @@ local function make_config()
       ["detection"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "details",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "indicators",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "isPhishing",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "recommendation",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "resource",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "scanId",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "score",
-            ["req"] = false,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "threatLevel",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "timestamp",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "url",
             ["op"] = {
               ["create"] = {
@@ -99,9 +74,7 @@ local function make_config()
                 ["type"] = "`$STRING`",
               },
             },
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 9,
           },
         },
         ["name"] = "detection",
@@ -111,7 +84,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
@@ -124,41 +96,32 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "create",
           },
           ["list"] = {
             ["input"] = "data",
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "domain",
                       ["orig"] = "domain",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "scan_id",
                       ["orig"] = "scan_id",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "url",
                       ["orig"] = "url",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                   },
@@ -180,10 +143,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.indicators`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
         },
         ["relations"] = {

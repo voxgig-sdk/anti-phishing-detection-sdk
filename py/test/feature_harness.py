@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from antiphishingdetection_sdk.config import make_config
+from antiphishingdetection_sdk.config import shared_config
 from antiphishingdetection_sdk.features import _make_feature
 from antiphishingdetection_sdk.core.control import AntiPhishingDetectionControl
 from antiphishingdetection_sdk.core.error import AntiPhishingDetectionError
@@ -24,7 +24,7 @@ from antiphishingdetection_sdk.core.spec import AntiPhishingDetectionSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

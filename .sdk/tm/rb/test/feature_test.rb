@@ -15,7 +15,7 @@ require_relative "../AntiPhishingDetection_sdk"
 module AntiPhishingDetectionFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = AntiPhishingDetectionConfig.make_config["feature"]
+    f = AntiPhishingDetectionConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
