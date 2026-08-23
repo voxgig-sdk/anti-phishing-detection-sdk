@@ -8,46 +8,55 @@ main: kit: entity: detection: {
     {
       name: "details"
       req: false
+      short: "Additional information about the detection"
       type: "`$STRING`"
     }
     {
       name: "indicators"
       req: false
+      short: "List of phishing indicators detected"
       type: "`$ARRAY`"
     }
     {
       name: "isPhishing"
       req: false
+      short: "Whether the URL is identified as phishing"
       type: "`$BOOLEAN`"
     }
     {
       name: "recommendation"
       req: false
+      short: "Recommended action based on the scan results"
       type: "`$STRING`"
     }
     {
       name: "resource"
       req: false
+      short: "The scanned resource (URL or domain)"
       type: "`$STRING`"
     }
     {
       name: "scanId"
       req: false
+      short: "Unique identifier for the scan"
       type: "`$STRING`"
     }
     {
       name: "score"
       req: false
+      short: "Confidence score of the detection (0-100)"
       type: "`$NUMBER`"
     }
     {
       name: "threatLevel"
       req: false
+      short: "The severity level of the threat"
       type: "`$STRING`"
     }
     {
       name: "timestamp"
       req: false
+      short: "When the scan was performed"
       type: "`$STRING`"
     }
     {
@@ -59,6 +68,7 @@ main: kit: entity: detection: {
         }
       }
       req: false
+      short: "The analyzed URL"
       type: "`$STRING`"
     }
   ]

@@ -260,16 +260,16 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `details` |  |
-| `indicators` |  |
-| `isPhishing` |  |
-| `recommendation` |  |
-| `resource` |  |
-| `scanId` |  |
-| `score` |  |
-| `threatLevel` |  |
-| `timestamp` |  |
-| `url` |  |
+| `details` | Additional information about the detection |
+| `indicators` | List of phishing indicators detected |
+| `isPhishing` | Whether the URL is identified as phishing |
+| `recommendation` | Recommended action based on the scan results |
+| `resource` | The scanned resource (URL or domain) |
+| `scanId` | Unique identifier for the scan |
+| `score` | Confidence score of the detection (0-100) |
+| `threatLevel` | The severity level of the threat |
+| `timestamp` | When the scan was performed |
+| `url` | The analyzed URL |
 
 Operations: Create, List.
 
@@ -295,16 +295,16 @@ Create an instance: `$detection = $client->Detection();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `details` | `string` |  |
-| `indicators` | `array` |  |
-| `isPhishing` | `bool` |  |
-| `recommendation` | `string` |  |
-| `resource` | `string` |  |
-| `scanId` | `string` |  |
-| `score` | `float` |  |
-| `threatLevel` | `string` |  |
-| `timestamp` | `string` |  |
-| `url` | `string` |  |
+| `details` | `string` | Additional information about the detection |
+| `indicators` | `array` | List of phishing indicators detected |
+| `isPhishing` | `bool` | Whether the URL is identified as phishing |
+| `recommendation` | `string` | Recommended action based on the scan results |
+| `resource` | `string` | The scanned resource (URL or domain) |
+| `scanId` | `string` | Unique identifier for the scan |
+| `score` | `float` | Confidence score of the detection (0-100) |
+| `threatLevel` | `string` | The severity level of the threat |
+| `timestamp` | `string` | When the scan was performed |
+| `url` | `string` | The analyzed URL |
 
 #### Example: List
 

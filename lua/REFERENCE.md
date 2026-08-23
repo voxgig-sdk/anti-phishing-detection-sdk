@@ -91,16 +91,16 @@ local detection = client:Detection(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `details` | `string` | No |  |
-| `indicators` | `table` | No |  |
-| `isPhishing` | `boolean` | No |  |
-| `recommendation` | `string` | No |  |
-| `resource` | `string` | No |  |
-| `scanId` | `string` | No |  |
-| `score` | `number` | No |  |
-| `threatLevel` | `string` | No |  |
-| `timestamp` | `string` | No |  |
-| `url` | `string` | No |  |
+| `details` | `string` | No | Additional information about the detection |
+| `indicators` | `table` | No | List of phishing indicators detected |
+| `isPhishing` | `boolean` | No | Whether the URL is identified as phishing |
+| `recommendation` | `string` | No | Recommended action based on the scan results |
+| `resource` | `string` | No | The scanned resource (URL or domain) |
+| `scanId` | `string` | No | Unique identifier for the scan |
+| `score` | `number` | No | Confidence score of the detection (0-100) |
+| `threatLevel` | `string` | No | The severity level of the threat |
+| `timestamp` | `string` | No | When the scan was performed |
+| `url` | `string` | No | The analyzed URL |
 
 ### Field Usage by Operation
 

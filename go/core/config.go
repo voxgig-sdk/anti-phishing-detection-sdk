@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "AntiPhishingDetection",
+			"slug": "anti-phishing-detection",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -36,38 +39,47 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "details",
+						"short": "Additional information about the detection",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "indicators",
+						"short": "List of phishing indicators detected",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "isPhishing",
+						"short": "Whether the URL is identified as phishing",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "recommendation",
+						"short": "Recommended action based on the scan results",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "resource",
+						"short": "The scanned resource (URL or domain)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "scanId",
+						"short": "Unique identifier for the scan",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "score",
+						"short": "Confidence score of the detection (0-100)",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "threatLevel",
+						"short": "The severity level of the threat",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "timestamp",
+						"short": "When the scan was performed",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -78,6 +90,7 @@ func MakeConfig() map[string]any {
 								"type": "`$STRING`",
 							},
 						},
+						"short": "The analyzed URL",
 						"type": "`$STRING`",
 					},
 				},

@@ -257,16 +257,16 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `details` |  |
-| `indicators` |  |
-| `isPhishing` |  |
-| `recommendation` |  |
-| `resource` |  |
-| `scanId` |  |
-| `score` |  |
-| `threatLevel` |  |
-| `timestamp` |  |
-| `url` |  |
+| `details` | Additional information about the detection |
+| `indicators` | List of phishing indicators detected |
+| `isPhishing` | Whether the URL is identified as phishing |
+| `recommendation` | Recommended action based on the scan results |
+| `resource` | The scanned resource (URL or domain) |
+| `scanId` | Unique identifier for the scan |
+| `score` | Confidence score of the detection (0-100) |
+| `threatLevel` | The severity level of the threat |
+| `timestamp` | When the scan was performed |
+| `url` | The analyzed URL |
 
 Operations: Create, List.
 
@@ -292,16 +292,16 @@ Create an instance: `detection = client.Detection()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `details` | `str` |  |
-| `indicators` | `list` |  |
-| `isPhishing` | `bool` |  |
-| `recommendation` | `str` |  |
-| `resource` | `str` |  |
-| `scanId` | `str` |  |
-| `score` | `float` |  |
-| `threatLevel` | `str` |  |
-| `timestamp` | `str` |  |
-| `url` | `str` |  |
+| `details` | `str` | Additional information about the detection |
+| `indicators` | `list` | List of phishing indicators detected |
+| `isPhishing` | `bool` | Whether the URL is identified as phishing |
+| `recommendation` | `str` | Recommended action based on the scan results |
+| `resource` | `str` | The scanned resource (URL or domain) |
+| `scanId` | `str` | Unique identifier for the scan |
+| `score` | `float` | Confidence score of the detection (0-100) |
+| `threatLevel` | `str` | The severity level of the threat |
+| `timestamp` | `str` | When the scan was performed |
+| `url` | `str` | The analyzed URL |
 
 #### Example: List
 

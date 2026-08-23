@@ -88,16 +88,16 @@ detection = client.Detection()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `details` | `str` | No |  |
-| `indicators` | `list` | No |  |
-| `isPhishing` | `bool` | No |  |
-| `recommendation` | `str` | No |  |
-| `resource` | `str` | No |  |
-| `scanId` | `str` | No |  |
-| `score` | `float` | No |  |
-| `threatLevel` | `str` | No |  |
-| `timestamp` | `str` | No |  |
-| `url` | `str` | No |  |
+| `details` | `str` | No | Additional information about the detection |
+| `indicators` | `list` | No | List of phishing indicators detected |
+| `isPhishing` | `bool` | No | Whether the URL is identified as phishing |
+| `recommendation` | `str` | No | Recommended action based on the scan results |
+| `resource` | `str` | No | The scanned resource (URL or domain) |
+| `scanId` | `str` | No | Unique identifier for the scan |
+| `score` | `float` | No | Confidence score of the detection (0-100) |
+| `threatLevel` | `str` | No | The severity level of the threat |
+| `timestamp` | `str` | No | When the scan was performed |
+| `url` | `str` | No | The analyzed URL |
 
 ### Field Usage by Operation
 

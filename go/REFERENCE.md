@@ -99,16 +99,16 @@ fmt.Println(detection.GetName()) // "detection"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `details` | `string` | No |  |
-| `indicators` | `[]any` | No |  |
-| `isPhishing` | `bool` | No |  |
-| `recommendation` | `string` | No |  |
-| `resource` | `string` | No |  |
-| `scanId` | `string` | No |  |
-| `score` | `float64` | No |  |
-| `threatLevel` | `string` | No |  |
-| `timestamp` | `string` | No |  |
-| `url` | `string` | No |  |
+| `details` | `string` | No | Additional information about the detection |
+| `indicators` | `[]any` | No | List of phishing indicators detected |
+| `isPhishing` | `bool` | No | Whether the URL is identified as phishing |
+| `recommendation` | `string` | No | Recommended action based on the scan results |
+| `resource` | `string` | No | The scanned resource (URL or domain) |
+| `scanId` | `string` | No | Unique identifier for the scan |
+| `score` | `float64` | No | Confidence score of the detection (0-100) |
+| `threatLevel` | `string` | No | The severity level of the threat |
+| `timestamp` | `string` | No | When the scan was performed |
+| `url` | `string` | No | The analyzed URL |
 
 ### Field Usage by Operation
 

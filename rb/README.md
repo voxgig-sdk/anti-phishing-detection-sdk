@@ -250,16 +250,16 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `details` |  |
-| `indicators` |  |
-| `isPhishing` |  |
-| `recommendation` |  |
-| `resource` |  |
-| `scanId` |  |
-| `score` |  |
-| `threatLevel` |  |
-| `timestamp` |  |
-| `url` |  |
+| `details` | Additional information about the detection |
+| `indicators` | List of phishing indicators detected |
+| `isPhishing` | Whether the URL is identified as phishing |
+| `recommendation` | Recommended action based on the scan results |
+| `resource` | The scanned resource (URL or domain) |
+| `scanId` | Unique identifier for the scan |
+| `score` | Confidence score of the detection (0-100) |
+| `threatLevel` | The severity level of the threat |
+| `timestamp` | When the scan was performed |
+| `url` | The analyzed URL |
 
 Operations: Create, List.
 
@@ -285,16 +285,16 @@ Create an instance: `detection = client.Detection`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `details` | `String` |  |
-| `indicators` | `Array` |  |
-| `isPhishing` | `Boolean` |  |
-| `recommendation` | `String` |  |
-| `resource` | `String` |  |
-| `scanId` | `String` |  |
-| `score` | `Float` |  |
-| `threatLevel` | `String` |  |
-| `timestamp` | `String` |  |
-| `url` | `String` |  |
+| `details` | `String` | Additional information about the detection |
+| `indicators` | `Array` | List of phishing indicators detected |
+| `isPhishing` | `Boolean` | Whether the URL is identified as phishing |
+| `recommendation` | `String` | Recommended action based on the scan results |
+| `resource` | `String` | The scanned resource (URL or domain) |
+| `scanId` | `String` | Unique identifier for the scan |
+| `score` | `Float` | Confidence score of the detection (0-100) |
+| `threatLevel` | `String` | The severity level of the threat |
+| `timestamp` | `String` | When the scan was performed |
+| `url` | `String` | The analyzed URL |
 
 #### Example: List
 

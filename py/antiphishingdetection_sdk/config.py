@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "AntiPhishingDetection",
+            "slug": "anti-phishing-detection",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -53,38 +56,47 @@ def make_config():
         "fields": [
           {
             "name": "details",
+            "short": "Additional information about the detection",
             "type": "`$STRING`",
           },
           {
             "name": "indicators",
+            "short": "List of phishing indicators detected",
             "type": "`$ARRAY`",
           },
           {
             "name": "isPhishing",
+            "short": "Whether the URL is identified as phishing",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "recommendation",
+            "short": "Recommended action based on the scan results",
             "type": "`$STRING`",
           },
           {
             "name": "resource",
+            "short": "The scanned resource (URL or domain)",
             "type": "`$STRING`",
           },
           {
             "name": "scanId",
+            "short": "Unique identifier for the scan",
             "type": "`$STRING`",
           },
           {
             "name": "score",
+            "short": "Confidence score of the detection (0-100)",
             "type": "`$NUMBER`",
           },
           {
             "name": "threatLevel",
+            "short": "The severity level of the threat",
             "type": "`$STRING`",
           },
           {
             "name": "timestamp",
+            "short": "When the scan was performed",
             "type": "`$STRING`",
           },
           {
@@ -95,6 +107,7 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
+            "short": "The analyzed URL",
             "type": "`$STRING`",
           },
         ],

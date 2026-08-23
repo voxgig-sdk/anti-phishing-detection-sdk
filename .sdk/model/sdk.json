@@ -36,54 +36,63 @@
               "active": true,
               "name": "details",
               "req": false,
+              "short": "Additional information about the detection",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "indicators",
               "req": false,
+              "short": "List of phishing indicators detected",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "isPhishing",
               "req": false,
+              "short": "Whether the URL is identified as phishing",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "recommendation",
               "req": false,
+              "short": "Recommended action based on the scan results",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "resource",
               "req": false,
+              "short": "The scanned resource (URL or domain)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "scanId",
               "req": false,
+              "short": "Unique identifier for the scan",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "score",
               "req": false,
+              "short": "Confidence score of the detection (0-100)",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "threatLevel",
               "req": false,
+              "short": "The severity level of the threat",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "timestamp",
               "req": false,
+              "short": "When the scan was performed",
               "type": "`$STRING`"
             },
             {
@@ -96,6 +105,7 @@
                 }
               },
               "req": false,
+              "short": "The analyzed URL",
               "type": "`$STRING`"
             }
           ],

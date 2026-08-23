@@ -246,16 +246,16 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `details` |  |
-| `indicators` |  |
-| `isPhishing` |  |
-| `recommendation` |  |
-| `resource` |  |
-| `scanId` |  |
-| `score` |  |
-| `threatLevel` |  |
-| `timestamp` |  |
-| `url` |  |
+| `details` | Additional information about the detection |
+| `indicators` | List of phishing indicators detected |
+| `isPhishing` | Whether the URL is identified as phishing |
+| `recommendation` | Recommended action based on the scan results |
+| `resource` | The scanned resource (URL or domain) |
+| `scanId` | Unique identifier for the scan |
+| `score` | Confidence score of the detection (0-100) |
+| `threatLevel` | The severity level of the threat |
+| `timestamp` | When the scan was performed |
+| `url` | The analyzed URL |
 
 Operations: Create, List.
 
@@ -281,16 +281,16 @@ Create an instance: `local detection = client:Detection(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `details` | `string` |  |
-| `indicators` | `table` |  |
-| `isPhishing` | `boolean` |  |
-| `recommendation` | `string` |  |
-| `resource` | `string` |  |
-| `scanId` | `string` |  |
-| `score` | `number` |  |
-| `threatLevel` | `string` |  |
-| `timestamp` | `string` |  |
-| `url` | `string` |  |
+| `details` | `string` | Additional information about the detection |
+| `indicators` | `table` | List of phishing indicators detected |
+| `isPhishing` | `boolean` | Whether the URL is identified as phishing |
+| `recommendation` | `string` | Recommended action based on the scan results |
+| `resource` | `string` | The scanned resource (URL or domain) |
+| `scanId` | `string` | Unique identifier for the scan |
+| `score` | `number` | Confidence score of the detection (0-100) |
+| `threatLevel` | `string` | The severity level of the threat |
+| `timestamp` | `string` | When the scan was performed |
+| `url` | `string` | The analyzed URL |
 
 #### Example: List
 

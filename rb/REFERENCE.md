@@ -94,16 +94,16 @@ detection = client.Detection
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `details` | `String` | No |  |
-| `indicators` | `Array` | No |  |
-| `isPhishing` | `Boolean` | No |  |
-| `recommendation` | `String` | No |  |
-| `resource` | `String` | No |  |
-| `scanId` | `String` | No |  |
-| `score` | `Float` | No |  |
-| `threatLevel` | `String` | No |  |
-| `timestamp` | `String` | No |  |
-| `url` | `String` | No |  |
+| `details` | `String` | No | Additional information about the detection |
+| `indicators` | `Array` | No | List of phishing indicators detected |
+| `isPhishing` | `Boolean` | No | Whether the URL is identified as phishing |
+| `recommendation` | `String` | No | Recommended action based on the scan results |
+| `resource` | `String` | No | The scanned resource (URL or domain) |
+| `scanId` | `String` | No | Unique identifier for the scan |
+| `score` | `Float` | No | Confidence score of the detection (0-100) |
+| `threatLevel` | `String` | No | The severity level of the threat |
+| `timestamp` | `String` | No | When the scan was performed |
+| `url` | `String` | No | The analyzed URL |
 
 ### Field Usage by Operation
 

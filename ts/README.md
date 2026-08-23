@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -306,16 +306,16 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `details` |  |
-| `indicators` |  |
-| `isPhishing` |  |
-| `recommendation` |  |
-| `resource` |  |
-| `scanId` |  |
-| `score` |  |
-| `threatLevel` |  |
-| `timestamp` |  |
-| `url` |  |
+| `details` | Additional information about the detection |
+| `indicators` | List of phishing indicators detected |
+| `isPhishing` | Whether the URL is identified as phishing |
+| `recommendation` | Recommended action based on the scan results |
+| `resource` | The scanned resource (URL or domain) |
+| `scanId` | Unique identifier for the scan |
+| `score` | Confidence score of the detection (0-100) |
+| `threatLevel` | The severity level of the threat |
+| `timestamp` | When the scan was performed |
+| `url` | The analyzed URL |
 
 Operations: create, list.
 
@@ -341,16 +341,16 @@ Create an instance: `const detection = client.Detection()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `details` | `string` |  |
-| `indicators` | `any[]` |  |
-| `isPhishing` | `boolean` |  |
-| `recommendation` | `string` |  |
-| `resource` | `string` |  |
-| `scanId` | `string` |  |
-| `score` | `number` |  |
-| `threatLevel` | `string` |  |
-| `timestamp` | `string` |  |
-| `url` | `string` |  |
+| `details` | `string` | Additional information about the detection |
+| `indicators` | `any[]` | List of phishing indicators detected |
+| `isPhishing` | `boolean` | Whether the URL is identified as phishing |
+| `recommendation` | `string` | Recommended action based on the scan results |
+| `resource` | `string` | The scanned resource (URL or domain) |
+| `scanId` | `string` | Unique identifier for the scan |
+| `score` | `number` | Confidence score of the detection (0-100) |
+| `threatLevel` | `string` | The severity level of the threat |
+| `timestamp` | `string` | When the scan was performed |
+| `url` | `string` | The analyzed URL |
 
 #### Example: List
 

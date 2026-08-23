@@ -6,7 +6,7 @@ The Golang SDK for the AntiPhishingDetection API — an entity-oriented client u
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Detection(nil)` — each with the same small set of operations (`List`, `Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -274,16 +274,16 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"details"` |  |
-| `"indicators"` |  |
-| `"isPhishing"` |  |
-| `"recommendation"` |  |
-| `"resource"` |  |
-| `"scanId"` |  |
-| `"score"` |  |
-| `"threatLevel"` |  |
-| `"timestamp"` |  |
-| `"url"` |  |
+| `"details"` | Additional information about the detection |
+| `"indicators"` | List of phishing indicators detected |
+| `"isPhishing"` | Whether the URL is identified as phishing |
+| `"recommendation"` | Recommended action based on the scan results |
+| `"resource"` | The scanned resource (URL or domain) |
+| `"scanId"` | Unique identifier for the scan |
+| `"score"` | Confidence score of the detection (0-100) |
+| `"threatLevel"` | The severity level of the threat |
+| `"timestamp"` | When the scan was performed |
+| `"url"` | The analyzed URL |
 
 Operations: Create, List.
 
@@ -309,16 +309,16 @@ Create an instance: `detection := client.Detection(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `details` | `string` |  |
-| `indicators` | `[]any` |  |
-| `isPhishing` | `bool` |  |
-| `recommendation` | `string` |  |
-| `resource` | `string` |  |
-| `scanId` | `string` |  |
-| `score` | `float64` |  |
-| `threatLevel` | `string` |  |
-| `timestamp` | `string` |  |
-| `url` | `string` |  |
+| `details` | `string` | Additional information about the detection |
+| `indicators` | `[]any` | List of phishing indicators detected |
+| `isPhishing` | `bool` | Whether the URL is identified as phishing |
+| `recommendation` | `string` | Recommended action based on the scan results |
+| `resource` | `string` | The scanned resource (URL or domain) |
+| `scanId` | `string` | Unique identifier for the scan |
+| `score` | `float64` | Confidence score of the detection (0-100) |
+| `threatLevel` | `string` | The severity level of the threat |
+| `timestamp` | `string` | When the scan was performed |
+| `url` | `string` | The analyzed URL |
 
 #### Example: List
 
