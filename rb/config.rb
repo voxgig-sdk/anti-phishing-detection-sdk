@@ -28,6 +28,7 @@ module AntiPhishingDetectionConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {

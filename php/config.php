@@ -42,6 +42,7 @@ class AntiPhishingDetectionConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
