@@ -19,15 +19,8 @@
 ---@field url? string
 
 ---@class DetectionListMatch
----@field details? string
----@field indicators? table
----@field isPhishing? boolean
----@field recommendation? string
----@field resource? string
----@field scanId? string
----@field score? number
----@field threatLevel? string
----@field timestamp? string
+---@field domain? string
+---@field scan_id? string
 ---@field url? string
 
 ---@class DetectionCreateData

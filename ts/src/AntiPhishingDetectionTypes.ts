@@ -19,15 +19,8 @@ export interface Detection {
 }
 
 export interface DetectionListMatch {
-  details?: string
-  indicators?: any[]
-  isPhishing?: boolean
-  recommendation?: string
-  resource?: string
-  scanId?: string
-  score?: number
-  threatLevel?: string
-  timestamp?: string
+  domain?: string
+  scan_id?: string
   url?: string
 }
 

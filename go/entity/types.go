@@ -28,15 +28,8 @@ type Detection struct {
 
 // DetectionListMatch is the typed request payload for Detection.ListTyped.
 type DetectionListMatch struct {
-	Details *string `json:"details,omitempty"`
-	Indicators *[]any `json:"indicators,omitempty"`
-	IsPhishing *bool `json:"isPhishing,omitempty"`
-	Recommendation *string `json:"recommendation,omitempty"`
-	Resource *string `json:"resource,omitempty"`
-	ScanId *string `json:"scanId,omitempty"`
-	Score *float64 `json:"score,omitempty"`
-	ThreatLevel *string `json:"threatLevel,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
+	Domain *string `json:"domain,omitempty"`
+	ScanId *string `json:"scan_id,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 

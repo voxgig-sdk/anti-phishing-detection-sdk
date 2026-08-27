@@ -30,15 +30,8 @@ class Detection(TypedDict, total=False):
 
 
 class DetectionListMatch(TypedDict, total=False):
-    details: str
-    indicators: list
-    isPhishing: bool
-    recommendation: str
-    resource: str
-    scanId: str
-    score: float
-    threatLevel: str
-    timestamp: str
+    domain: str
+    scan_id: str
     url: str
 
 
