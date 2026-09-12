@@ -75,11 +75,13 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "timestamp",
             ["short"] = "When the scan was performed",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["op"] = {
               ["create"] = {
@@ -102,13 +104,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/check",
-                ["parts"] = {
-                  "check",
+                ["segments"] = {
+                  {
+                    ["lit"] = "check",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "check",
                 },
               },
             },
@@ -143,8 +150,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/scan",
-                ["parts"] = {
-                  "scan",
+                ["segments"] = {
+                  {
+                    ["lit"] = "scan",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -156,6 +165,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.indicators`",
+                },
+                ["parts"] = {
+                  "scan",
                 },
               },
             },

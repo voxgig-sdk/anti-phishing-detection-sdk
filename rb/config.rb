@@ -87,11 +87,13 @@ module AntiPhishingDetectionConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "timestamp",
               "short" => "When the scan was performed",
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "op" => {
                 "create" => {
@@ -114,14 +116,19 @@ module AntiPhishingDetectionConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/check",
-                  "parts" => [
-                    "check",
+                  "segments" => [
+                    {
+                      "lit" => "check",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "check",
+                  ],
                 },
               ],
             },
@@ -155,8 +162,10 @@ module AntiPhishingDetectionConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/scan",
-                  "parts" => [
-                    "scan",
+                  "segments" => [
+                    {
+                      "lit" => "scan",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -169,6 +178,9 @@ module AntiPhishingDetectionConfig
                     "req" => "`reqdata`",
                     "res" => "`body.indicators`",
                   },
+                  "parts" => [
+                    "scan",
+                  ],
                 },
               ],
             },

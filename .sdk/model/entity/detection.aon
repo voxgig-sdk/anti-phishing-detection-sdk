@@ -54,12 +54,14 @@ main: kit: entity: detection: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       short: "When the scan was performed"
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       op: {
         create: {
@@ -81,8 +83,10 @@ main: kit: entity: detection: {
         {
           method: "POST"
           orig: "/check"
-          parts: [
-            "check"
+          segments: [
+            {
+              lit: "check"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -122,8 +126,10 @@ main: kit: entity: detection: {
           }
           method: "GET"
           orig: "/scan"
-          parts: [
-            "scan"
+          segments: [
+            {
+              lit: "scan"
+            }
           ]
           select: {
             exist: [

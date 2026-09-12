@@ -101,11 +101,13 @@ class AntiPhishingDetectionConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'timestamp',
               'short' => 'When the scan was performed',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'op' => [
                 'create' => [
@@ -128,13 +130,18 @@ class AntiPhishingDetectionConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/check',
-                  'parts' => [
-                    'check',
+                  'segments' => [
+                    [
+                      'lit' => 'check',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'check',
                   ],
                 ],
               ],
@@ -169,8 +176,10 @@ class AntiPhishingDetectionConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/scan',
-                  'parts' => [
-                    'scan',
+                  'segments' => [
+                    [
+                      'lit' => 'scan',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -182,6 +191,9 @@ class AntiPhishingDetectionConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.indicators`',
+                  ],
+                  'parts' => [
+                    'scan',
                   ],
                 ],
               ],

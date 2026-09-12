@@ -124,7 +124,7 @@ function detection_basic_setup($extra)
         "ANTI_PHISHING_DETECTION_TEST_DETECTION_ENTID" => $idmap,
         "ANTI_PHISHING_DETECTION_TEST_LIVE" => "FALSE",
         "ANTI_PHISHING_DETECTION_TEST_EXPLAIN" => "FALSE",
-        "ANTI_PHISHING_DETECTION_APIKEY" => "NONE",
+        "ANTI_PHISHING_DETECTION_APIKEY" => "",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -135,10 +135,17 @@ function detection_basic_setup($extra)
 
     if ($env["ANTI_PHISHING_DETECTION_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
                 "apikey" => $env["ANTI_PHISHING_DETECTION_APIKEY"],
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
         $client = new AntiPhishingDetectionSDK(Helpers::to_map($merged_opts));
     }

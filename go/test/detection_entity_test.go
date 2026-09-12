@@ -100,7 +100,7 @@ func TestDetectionEntity(t *testing.T) {
 		// CREATE
 		detectionRef01Ent := client.Detection(nil)
 		detectionRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "detection"}, setup.data), "detection_ref01"))
+			vs.GetPath(setup.data, []any{"new", "detection"}), "detection_ref01"))
 
 		detectionRef01DataResult, err := detectionRef01Ent.Create(detectionRef01Data, nil)
 		if err != nil {
@@ -150,7 +150,7 @@ func detectionBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"detection01", "detection02", "detection03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -170,7 +170,7 @@ func detectionBasicSetup(extra map[string]any) *entityTestSetup {
 		"ANTI_PHISHING_DETECTION_TEST_DETECTION_ENTID": idmap,
 		"ANTI_PHISHING_DETECTION_TEST_LIVE":      "FALSE",
 		"ANTI_PHISHING_DETECTION_TEST_EXPLAIN":   "FALSE",
-		"ANTI_PHISHING_DETECTION_APIKEY":         "NONE",
+		"ANTI_PHISHING_DETECTION_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["ANTI_PHISHING_DETECTION_TEST_DETECTION_ENTID"])
@@ -179,11 +179,23 @@ func detectionBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["ANTI_PHISHING_DETECTION_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["ANTI_PHISHING_DETECTION_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewAntiPhishingDetectionSDK(core.ToMapAny(mergedOpts))
 	}
