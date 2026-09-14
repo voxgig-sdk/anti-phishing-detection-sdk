@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AntiPhishingDetectionSDK } from '@voxgig-sdk/anti-phishing-detection'
+import { AntiPhishingDetectionSDK } from '@voxgig-sdk/anti-phishing-detection-sdk'
 
 const client = new AntiPhishingDetectionSDK({
   apikey: process.env.ANTI_PHISHING_DETECTION_APIKEY,
@@ -448,7 +448,7 @@ anti-phishing-detection/
 Import the SDK from the package root:
 
 ```ts
-import { AntiPhishingDetectionSDK } from '@voxgig-sdk/anti-phishing-detection'
+import { AntiPhishingDetectionSDK } from '@voxgig-sdk/anti-phishing-detection-sdk'
 ```
 
 ### Entity state

@@ -105,7 +105,7 @@ local results, err = client:Detection():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
+| TypeScript | `@voxgig-sdk/anti-phishing-detection-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
 | Python | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
 | PHP | `voxgig-sdk/anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/anti-phishing-detection-sdk/go` | `go get github.com/voxgig-sdk/anti-phishing-detection-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Detection():list()
 ### TypeScript
 
 ```ts
-import { AntiPhishingDetectionSDK } from '@voxgig-sdk/anti-phishing-detection'
+import { AntiPhishingDetectionSDK } from '@voxgig-sdk/anti-phishing-detection-sdk'
 
 const client = new AntiPhishingDetectionSDK({
   apikey: process.env.ANTI_PHISHING_DETECTION_APIKEY,
