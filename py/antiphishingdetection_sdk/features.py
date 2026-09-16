@@ -1,12 +1,18 @@
 # AntiPhishingDetection SDK feature factory
 
 from antiphishingdetection_sdk.feature.base_feature import AntiPhishingDetectionBaseFeature
+from antiphishingdetection_sdk.feature.ratelimit_feature import AntiPhishingDetectionRatelimitFeature
+from antiphishingdetection_sdk.feature.retry_feature import AntiPhishingDetectionRetryFeature
 from antiphishingdetection_sdk.feature.test_feature import AntiPhishingDetectionTestFeature
+from antiphishingdetection_sdk.feature.timeout_feature import AntiPhishingDetectionTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: AntiPhishingDetectionBaseFeature(),
+    "ratelimit": lambda: AntiPhishingDetectionRatelimitFeature(),
+    "retry": lambda: AntiPhishingDetectionRetryFeature(),
     "test": lambda: AntiPhishingDetectionTestFeature(),
+    "timeout": lambda: AntiPhishingDetectionTimeoutFeature(),
 }
 
 
