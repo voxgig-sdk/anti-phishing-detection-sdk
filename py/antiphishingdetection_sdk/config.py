@@ -106,6 +106,7 @@ def make_config():
             "base": "https://api.fishfish.gg",
             "auth": {
                 "prefix": "",
+                "name": "X-API-Key",
             },
             "headers": {
         "content-type": "application/json",

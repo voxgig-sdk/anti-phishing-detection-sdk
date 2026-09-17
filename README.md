@@ -105,12 +105,12 @@ local results, err = client:Detection():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/anti-phishing-detection-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
-| Python | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
-| PHP | `voxgig-sdk/anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
+| TypeScript | `@voxgig-sdk/anti-phishing-detection-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/tags) |
+| Python | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/tags) |
+| PHP | `voxgig-sdk/anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/anti-phishing-detection-sdk/go` | `go get github.com/voxgig-sdk/anti-phishing-detection-sdk/go@latest` |
-| Ruby | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
-| Lua | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases) |
+| Ruby | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/tags) |
+| Lua | `voxgig-sdk-anti-phishing-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/anti-phishing-detection-sdk/go-cli` | `go install github.com/voxgig-sdk/anti-phishing-detection-sdk/go-cli/cmd/anti-phishing-detection@latest` |
 | Go MCP server | `github.com/voxgig-sdk/anti-phishing-detection-sdk/go-mcp` | `go get github.com/voxgig-sdk/anti-phishing-detection-sdk/go-mcp@latest` |
 
