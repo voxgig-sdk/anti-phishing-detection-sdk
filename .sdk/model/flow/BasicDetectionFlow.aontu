@@ -1,0 +1,30 @@
+# BasicDetectionFlow
+
+main: kit: flow: BasicDetectionFlow:
+{
+  entity: "detection",
+  kind: "basic",
+  name: "BasicDetectionFlow",
+  step: [
+    {
+      i: {
+        ref: "detection_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "detection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDetectionFlow"
+}

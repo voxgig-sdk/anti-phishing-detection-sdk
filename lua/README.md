@@ -45,7 +45,7 @@ local detections, err = client:Detection():list()
 if err then error(err) end
 
 for _, item in ipairs(detections) do
-  print(item["details"])
+  print(item)
 end
 ```
 

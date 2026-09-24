@@ -95,53 +95,63 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "details",
-						"short": "Additional information about the detection",
+						"title": "Details",
 						"type": "`$STRING`",
+						"short": "Additional information about the detection",
 					},
 					map[string]any{
 						"name": "indicators",
-						"short": "List of phishing indicators detected",
+						"title": "Indicators",
 						"type": "`$ARRAY`",
+						"short": "List of phishing indicators detected",
 					},
 					map[string]any{
 						"name": "isPhishing",
-						"short": "Whether the URL is identified as phishing",
+						"title": "Is Phishing",
 						"type": "`$BOOLEAN`",
+						"short": "Whether the URL is identified as phishing",
 					},
 					map[string]any{
 						"name": "recommendation",
-						"short": "Recommended action based on the scan results",
+						"title": "Recommendation",
 						"type": "`$STRING`",
+						"short": "Recommended action based on the scan results",
 					},
 					map[string]any{
 						"name": "resource",
-						"short": "The scanned resource (URL or domain)",
+						"title": "Resource",
 						"type": "`$STRING`",
+						"short": "The scanned resource (URL or domain)",
 					},
 					map[string]any{
 						"name": "scanId",
-						"short": "Unique identifier for the scan",
+						"title": "Scan Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the scan",
 					},
 					map[string]any{
 						"name": "score",
-						"short": "Confidence score of the detection (0-100)",
+						"title": "Score",
 						"type": "`$NUMBER`",
+						"short": "Confidence score of the detection (0-100)",
 					},
 					map[string]any{
 						"name": "threatLevel",
+						"title": "Threat Level",
+						"type": "`$STRING`",
 						"short": "The severity level of the threat",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
-						"short": "When the scan was performed",
+						"title": "Timestamp",
 						"type": "`$STRING`",
+						"short": "When the scan was performed",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
 						"op": map[string]any{
 							"create": map[string]any{
 								"req": true,
@@ -149,7 +159,7 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "The analyzed URL",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 				},
 				"name": "detection",
@@ -159,7 +169,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/check",
@@ -168,14 +177,16 @@ func MakeConfig() map[string]any {
 										"lit": "check",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"check",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"check",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -184,28 +195,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "domain",
-											"orig": "domain",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "scan_id",
-											"orig": "scan_id",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "url",
-											"orig": "url",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/scan",
@@ -214,19 +203,42 @@ func MakeConfig() map[string]any {
 										"lit": "scan",
 									},
 								},
+								"parts": []any{
+									"scan",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.indicators`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "domain",
+											"orig": "domain",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "scan_id",
+											"orig": "scan_id",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "url",
+											"orig": "url",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"domain",
 										"scan_id",
 										"url",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.indicators`",
-								},
-								"parts": []any{
-									"scan",
 								},
 							},
 						},

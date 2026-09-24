@@ -1,0 +1,172 @@
+# Entity: detection
+
+main: kit: entity: detection: {
+
+  alias: field: {}
+
+  fields: {
+    details: {
+      h: "Details"
+      n: "details"
+      r: false
+      sh: "Additional information about the detection"
+      t: "`$STRING`"
+    }
+    indicators: {
+      h: "Indicators"
+      n: "indicators"
+      r: false
+      sh: "List of phishing indicators detected"
+      t: "`$ARRAY`"
+    }
+    isPhishing: {
+      h: "Is Phishing"
+      n: "isPhishing"
+      r: false
+      sh: "Whether the URL is identified as phishing"
+      t: "`$BOOLEAN`"
+    }
+    recommendation: {
+      h: "Recommendation"
+      n: "recommendation"
+      r: false
+      sh: "Recommended action based on the scan results"
+      t: "`$STRING`"
+    }
+    resource: {
+      h: "Resource"
+      n: "resource"
+      r: false
+      sh: "The scanned resource (URL or domain)"
+      t: "`$STRING`"
+    }
+    scanId: {
+      h: "Scan Id"
+      n: "scanId"
+      r: false
+      sh: "Unique identifier for the scan"
+      t: "`$STRING`"
+    }
+    score: {
+      h: "Score"
+      n: "score"
+      r: false
+      sh: "Confidence score of the detection (0-100)"
+      t: "`$NUMBER`"
+    }
+    threatLevel: {
+      h: "Threat Level"
+      n: "threatLevel"
+      r: false
+      sh: "The severity level of the threat"
+      t: "`$STRING`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      sh: "When the scan was performed"
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The analyzed URL"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "detection"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /check"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/check"
+          s: [
+            {
+              lit: "check"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /scan"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "domain"
+                or: "domain"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "scan_id"
+                or: "scan_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "url"
+                or: "url"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/scan"
+          q: {
+            exist: [
+              "domain"
+              "scan_id"
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "scan"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.indicators`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -118,53 +111,63 @@ class Config {
             "fields": [
                 {
                     "name": "details",
-                    "short": "Additional information about the detection",
-                    "type": "`$STRING`"
+                    "title": "Details",
+                    "type": "`$STRING`",
+                    "short": "Additional information about the detection"
                 },
                 {
                     "name": "indicators",
-                    "short": "List of phishing indicators detected",
-                    "type": "`$ARRAY`"
+                    "title": "Indicators",
+                    "type": "`$ARRAY`",
+                    "short": "List of phishing indicators detected"
                 },
                 {
                     "name": "isPhishing",
-                    "short": "Whether the URL is identified as phishing",
-                    "type": "`$BOOLEAN`"
+                    "title": "Is Phishing",
+                    "type": "`$BOOLEAN`",
+                    "short": "Whether the URL is identified as phishing"
                 },
                 {
                     "name": "recommendation",
-                    "short": "Recommended action based on the scan results",
-                    "type": "`$STRING`"
+                    "title": "Recommendation",
+                    "type": "`$STRING`",
+                    "short": "Recommended action based on the scan results"
                 },
                 {
                     "name": "resource",
-                    "short": "The scanned resource (URL or domain)",
-                    "type": "`$STRING`"
+                    "title": "Resource",
+                    "type": "`$STRING`",
+                    "short": "The scanned resource (URL or domain)"
                 },
                 {
                     "name": "scanId",
-                    "short": "Unique identifier for the scan",
-                    "type": "`$STRING`"
+                    "title": "Scan Id",
+                    "type": "`$STRING`",
+                    "short": "Unique identifier for the scan"
                 },
                 {
                     "name": "score",
-                    "short": "Confidence score of the detection (0-100)",
-                    "type": "`$NUMBER`"
+                    "title": "Score",
+                    "type": "`$NUMBER`",
+                    "short": "Confidence score of the detection (0-100)"
                 },
                 {
                     "name": "threatLevel",
-                    "short": "The severity level of the threat",
-                    "type": "`$STRING`"
+                    "title": "Threat Level",
+                    "type": "`$STRING`",
+                    "short": "The severity level of the threat"
                 },
                 {
-                    "format": "date-time",
                     "name": "timestamp",
+                    "title": "Timestamp",
+                    "type": "`$STRING`",
                     "short": "When the scan was performed",
-                    "type": "`$STRING`"
+                    "format": "date-time"
                 },
                 {
-                    "format": "uri",
                     "name": "url",
+                    "title": "Url",
+                    "type": "`$STRING`",
                     "op": {
                         "create": {
                             "req": true,
@@ -172,7 +175,7 @@ class Config {
                         }
                     },
                     "short": "The analyzed URL",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 }
             ],
             "name": "detection",
@@ -182,7 +185,6 @@ class Config {
                     "name": "create",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/check",
@@ -191,14 +193,16 @@ class Config {
                                     "lit": "check"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "check"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "check"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -207,28 +211,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "domain",
-                                        "orig": "domain",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "scan_id",
-                                        "orig": "scan_id",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "url",
-                                        "orig": "url",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/scan",
@@ -237,20 +219,43 @@ class Config {
                                     "lit": "scan"
                                 }
                             ],
+                            "parts": [
+                                "scan"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.indicators`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "domain",
+                                        "orig": "domain",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "scan_id",
+                                        "orig": "scan_id",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "url",
+                                        "orig": "url",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "domain",
                                     "scan_id",
                                     "url"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.indicators`"
-                            },
-                            "parts": [
-                                "scan"
-                            ]
+                            }
                         }
                     ]
                 }

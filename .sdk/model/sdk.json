@@ -24,92 +24,168 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "detection": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "details",
-              "req": false,
-              "short": "Additional information about the detection",
-              "type": "`$STRING`"
+          "fields": {
+            "details": {
+              "a": true,
+              "h": "Details",
+              "n": "details",
+              "r": false,
+              "sh": "Additional information about the detection",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "indicators",
-              "req": false,
-              "short": "List of phishing indicators detected",
-              "type": "`$ARRAY`"
+            "indicators": {
+              "a": true,
+              "h": "Indicators",
+              "n": "indicators",
+              "r": false,
+              "sh": "List of phishing indicators detected",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "isPhishing",
-              "req": false,
-              "short": "Whether the URL is identified as phishing",
-              "type": "`$BOOLEAN`"
+            "isPhishing": {
+              "a": true,
+              "h": "Is Phishing",
+              "n": "isPhishing",
+              "r": false,
+              "sh": "Whether the URL is identified as phishing",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "recommendation",
-              "req": false,
-              "short": "Recommended action based on the scan results",
-              "type": "`$STRING`"
+            "recommendation": {
+              "a": true,
+              "h": "Recommendation",
+              "n": "recommendation",
+              "r": false,
+              "sh": "Recommended action based on the scan results",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "resource",
-              "req": false,
-              "short": "The scanned resource (URL or domain)",
-              "type": "`$STRING`"
+            "resource": {
+              "a": true,
+              "h": "Resource",
+              "n": "resource",
+              "r": false,
+              "sh": "The scanned resource (URL or domain)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "scanId",
-              "req": false,
-              "short": "Unique identifier for the scan",
-              "type": "`$STRING`"
+            "scanId": {
+              "a": true,
+              "h": "Scan Id",
+              "n": "scanId",
+              "r": false,
+              "sh": "Unique identifier for the scan",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "score",
-              "req": false,
-              "short": "Confidence score of the detection (0-100)",
-              "type": "`$NUMBER`"
+            "score": {
+              "a": true,
+              "h": "Score",
+              "n": "score",
+              "r": false,
+              "sh": "Confidence score of the detection (0-100)",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "threatLevel",
-              "req": false,
-              "short": "The severity level of the threat",
-              "type": "`$STRING`"
+            "threatLevel": {
+              "a": true,
+              "h": "Threat Level",
+              "n": "threatLevel",
+              "r": false,
+              "sh": "The severity level of the threat",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "short": "When the scan was performed",
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "sh": "When the scan was performed",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
               "op": {
                 "create": {
                   "req": true,
                   "type": "`$STRING`"
                 }
               },
-              "req": false,
-              "short": "The analyzed URL",
-              "type": "`$STRING`"
+              "r": false,
+              "sh": "The analyzed URL",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "detection",
           "op": {
             "create": {
@@ -117,24 +193,24 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /check",
-                    "json": "{\"operationId\":\"checkUrl\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"url\":{\"description\":\"The URL to check for phishing threats\",\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"url\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional information about the detection\",\"type\":\"string\"},\"isPhishing\":{\"description\":\"Whether the URL is identified as phishing\",\"type\":\"boolean\"},\"score\":{\"description\":\"Confidence score of the detection (0-100)\",\"type\":\"number\"},\"threatLevel\":{\"description\":\"The severity level of the threat\",\"enum\":[\"low\",\"medium\",\"high\",\"critical\"],\"type\":\"string\"},\"url\":{\"description\":\"The analyzed URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful analysis of the URL\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid URL format\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Too many requests - rate limit exceeded\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/check",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/check",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "check"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -146,57 +222,57 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /scan",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "domain",
-                        "orig": "domain",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "domain",
+                        "or": "domain",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "scan_id",
-                        "orig": "scan_id",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "scan_id",
+                        "or": "scan_id",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /scan",
-                    "json": "{\"operationId\":\"scanResource\",\"parameters\":[{\"description\":\"URL to scan for phishing threats\",\"in\":\"query\",\"name\":\"url\",\"required\":false,\"schema\":{\"format\":\"uri\",\"type\":\"string\"}},{\"description\":\"Domain to scan for phishing threats\",\"in\":\"query\",\"name\":\"domain\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"ID of a previous scan to retrieve results\",\"in\":\"query\",\"name\":\"scanId\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"indicators\":{\"description\":\"List of phishing indicators detected\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"isPhishing\":{\"description\":\"Whether the resource is identified as phishing\",\"type\":\"boolean\"},\"recommendation\":{\"description\":\"Recommended action based on the scan results\",\"type\":\"string\"},\"resource\":{\"description\":\"The scanned resource (URL or domain)\",\"type\":\"string\"},\"scanId\":{\"description\":\"Unique identifier for the scan\",\"type\":\"string\"},\"threatLevel\":{\"description\":\"The severity level of the threat\",\"enum\":[\"low\",\"medium\",\"high\",\"critical\"],\"type\":\"string\"},\"timestamp\":{\"description\":\"When the scan was performed\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful scan operation\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Scan not found\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Too many requests - rate limit exceeded\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/scan",
-                  "segments": [
-                    {
-                      "lit": "scan"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/scan",
+                  "q": {
                     "exist": [
                       "domain",
                       "scan_id",
                       "url"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "scan"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.indicators`"
                   }
@@ -625,24 +701,24 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "detection_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

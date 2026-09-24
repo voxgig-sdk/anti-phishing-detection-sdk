@@ -103,53 +103,63 @@ module AntiPhishingDetectionConfig
           "fields" => [
             {
               "name" => "details",
-              "short" => "Additional information about the detection",
+              "title" => "Details",
               "type" => "`$STRING`",
+              "short" => "Additional information about the detection",
             },
             {
               "name" => "indicators",
-              "short" => "List of phishing indicators detected",
+              "title" => "Indicators",
               "type" => "`$ARRAY`",
+              "short" => "List of phishing indicators detected",
             },
             {
               "name" => "isPhishing",
-              "short" => "Whether the URL is identified as phishing",
+              "title" => "Is Phishing",
               "type" => "`$BOOLEAN`",
+              "short" => "Whether the URL is identified as phishing",
             },
             {
               "name" => "recommendation",
-              "short" => "Recommended action based on the scan results",
+              "title" => "Recommendation",
               "type" => "`$STRING`",
+              "short" => "Recommended action based on the scan results",
             },
             {
               "name" => "resource",
-              "short" => "The scanned resource (URL or domain)",
+              "title" => "Resource",
               "type" => "`$STRING`",
+              "short" => "The scanned resource (URL or domain)",
             },
             {
               "name" => "scanId",
-              "short" => "Unique identifier for the scan",
+              "title" => "Scan Id",
               "type" => "`$STRING`",
+              "short" => "Unique identifier for the scan",
             },
             {
               "name" => "score",
-              "short" => "Confidence score of the detection (0-100)",
+              "title" => "Score",
               "type" => "`$NUMBER`",
+              "short" => "Confidence score of the detection (0-100)",
             },
             {
               "name" => "threatLevel",
+              "title" => "Threat Level",
+              "type" => "`$STRING`",
               "short" => "The severity level of the threat",
-              "type" => "`$STRING`",
             },
             {
-              "format" => "date-time",
               "name" => "timestamp",
-              "short" => "When the scan was performed",
+              "title" => "Timestamp",
               "type" => "`$STRING`",
+              "short" => "When the scan was performed",
+              "format" => "date-time",
             },
             {
-              "format" => "uri",
               "name" => "url",
+              "title" => "Url",
+              "type" => "`$STRING`",
               "op" => {
                 "create" => {
                   "req" => true,
@@ -157,7 +167,7 @@ module AntiPhishingDetectionConfig
                 },
               },
               "short" => "The analyzed URL",
-              "type" => "`$STRING`",
+              "format" => "uri",
             },
           ],
           "name" => "detection",
@@ -167,7 +177,6 @@ module AntiPhishingDetectionConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/check",
@@ -176,14 +185,16 @@ module AntiPhishingDetectionConfig
                       "lit" => "check",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "check",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "check",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -192,28 +203,6 @@ module AntiPhishingDetectionConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "domain",
-                        "orig" => "domain",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "scan_id",
-                        "orig" => "scan_id",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "url",
-                        "orig" => "url",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/scan",
@@ -222,6 +211,36 @@ module AntiPhishingDetectionConfig
                       "lit" => "scan",
                     },
                   ],
+                  "parts" => [
+                    "scan",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.indicators`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "domain",
+                        "orig" => "domain",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "scan_id",
+                        "orig" => "scan_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "url",
+                        "orig" => "url",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "domain",
@@ -229,13 +248,6 @@ module AntiPhishingDetectionConfig
                       "url",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.indicators`",
-                  },
-                  "parts" => [
-                    "scan",
-                  ],
                 },
               ],
             },

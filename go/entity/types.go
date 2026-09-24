@@ -1,7 +1,7 @@
 // Typed models for the AntiPhishingDetection SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,16 +14,6 @@ import (
 
 // Detection is the typed data model for the detection entity.
 type Detection struct {
-	Details *string `json:"details,omitempty"`
-	Indicators *[]any `json:"indicators,omitempty"`
-	IsPhishing *bool `json:"isPhishing,omitempty"`
-	Recommendation *string `json:"recommendation,omitempty"`
-	Resource *string `json:"resource,omitempty"`
-	ScanId *string `json:"scanId,omitempty"`
-	Score *float64 `json:"score,omitempty"`
-	ThreatLevel *string `json:"threatLevel,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // DetectionListMatch is the typed request payload for Detection.ListTyped.
