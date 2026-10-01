@@ -229,7 +229,7 @@ module AntiPhishingDetectionConfig
                       },
                       {
                         "name" => "scan_id",
-                        "orig" => "scan_id",
+                        "orig" => "scanId",
                         "type" => "`$STRING`",
                         "kind" => "query",
                       },

@@ -131,7 +131,7 @@ main: kit: entity: detection: {
               {
                 k: "query"
                 n: "scan_id"
-                or: "scan_id"
+                or: "scanId"
                 r: false
                 t: "`$STRING`"
               }

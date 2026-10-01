@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 AntiPhishingDetectionUtility::setRegistrar(function (AntiPhishingDetectionUtility $u): void {
     $u->clean = [AntiPhishingDetectionClean::class, 'call'];
+    $u->clean_add = [AntiPhishingDetectionClean::class, 'add'];
+    $u->clean_explain = [AntiPhishingDetectionDone::class, 'clean_explain'];
     $u->done = [AntiPhishingDetectionDone::class, 'call'];
     $u->make_error = [AntiPhishingDetectionMakeError::class, 'call'];
     $u->feature_add = [AntiPhishingDetectionFeatureAdd::class, 'call'];

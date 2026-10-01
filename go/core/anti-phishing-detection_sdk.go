@@ -1,6 +1,7 @@
 package core
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 
@@ -82,6 +83,22 @@ func NewAntiPhishingDetectionSDK(options map[string]any) *AntiPhishingDetectionS
 	sdk.utility.FeatureHook(sdk.rootctx, "PostConstruct")
 
 	return sdk
+}
+
+// The client holds the credential in its options, so a print or a JSON dump
+// carries the name alone. Value receivers: a dereferenced client prints the
+// same way.
+func (sdk AntiPhishingDetectionSDK) String() string {
+	return "AntiPhishingDetection " + vs.Jsonify(map[string]any{"name": "AntiPhishingDetection"},
+		map[string]any{"indent": 0})
+}
+
+func (sdk AntiPhishingDetectionSDK) GoString() string {
+	return sdk.String()
+}
+
+func (sdk AntiPhishingDetectionSDK) MarshalJSON() ([]byte, error) {
+	return json.Marshal(map[string]any{"name": "AntiPhishingDetection"})
 }
 
 func (sdk *AntiPhishingDetectionSDK) OptionsMap() map[string]any {
@@ -210,7 +227,7 @@ func (sdk *AntiPhishingDetectionSDK) rawRequest(fetchargs map[string]any) (map[s
 
 	fetchdef, err := sdk.Prepare(fetchargs)
 	if err != nil {
-		return map[string]any{"ok": false, "err": err}, nil
+		return map[string]any{"ok": false, "err": sdk.cleanErr(sdk.rootctx, err)}, nil
 	}
 
 	if fetchargs == nil {
@@ -236,7 +253,7 @@ func (sdk *AntiPhishingDetectionSDK) rawRequest(fetchargs map[string]any) (map[s
 	fetched, fetchErr := utility.Fetcher(ctx, url, fetchdef)
 
 	if fetchErr != nil {
-		return map[string]any{"ok": false, "err": fetchErr}, nil
+		return map[string]any{"ok": false, "err": sdk.cleanErr(ctx, fetchErr)}, nil
 	}
 
 	if fetched == nil {
@@ -278,6 +295,14 @@ func (sdk *AntiPhishingDetectionSDK) rawRequest(fetchargs map[string]any) (map[s
 	}
 
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
+}
+
+// A raw request returns its error rather than passing it through MakeError.
+func (sdk *AntiPhishingDetectionSDK) cleanErr(ctx *Context, err error) error {
+	if cleaned, ok := sdk.utility.Clean(ctx, err).(error); ok {
+		return cleaned
+	}
+	return err
 }
 
 func (sdk *AntiPhishingDetectionSDK) Graphql(

@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 AntiPhishingDetectionUtility.registrar = ->(u) {
   u.clean = AntiPhishingDetectionUtilities::Clean
+  u.clean_add = AntiPhishingDetectionUtilities::CleanAdd
+  u.clean_explain = AntiPhishingDetectionUtilities::CleanExplain
   u.done = AntiPhishingDetectionUtilities::Done
   u.make_error = AntiPhishingDetectionUtilities::MakeError
   u.feature_add = AntiPhishingDetectionUtilities::FeatureAdd

@@ -221,7 +221,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "scan_id",
-											"orig": "scan_id",
+											"orig": "scanId",
 											"type": "`$STRING`",
 											"kind": "query",
 										},
