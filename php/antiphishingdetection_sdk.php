@@ -156,7 +156,13 @@ class AntiPhishingDetectionSDK implements \JsonSerializable
         $path = Struct::getprop($fetchargs, "path") ?? "";
         $path = is_string($path) ? $path : "";
         $method_val = Struct::getprop($fetchargs, "method") ?? "GET";
-        $method_val = is_string($method_val) ? $method_val : "GET";
+        $method_val = strtoupper(is_string($method_val) && '' !== $method_val ? $method_val : "GET");
+        $allow_method = Struct::getpath($opts, "allow.method");
+        if (!AntiPhishingDetectionPrepareMethod::allowed($allow_method, $method_val)) {
+            return ($utility->make_error)($ctx, $ctx->make_error("spec_method_allow",
+                "Method \"" . $method_val . "\" not allowed by SDK option allow.method value: \"" .
+                (is_string($allow_method) ? $allow_method : "") . "\""));
+        }
         $params = AntiPhishingDetectionHelpers::to_map(Struct::getprop($fetchargs, "params")) ?? [];
         $query = AntiPhishingDetectionHelpers::to_map(Struct::getprop($fetchargs, "query")) ?? [];
         $headers = ($utility->prepare_headers)($ctx);
@@ -211,8 +217,7 @@ class AntiPhishingDetectionSDK implements \JsonSerializable
     // Is this raw-access op permitted by the SDK's allow.op option?
     private function op_allowed(string $op): bool
     {
-        $allow_op = Struct::getpath($this->options, "allow.op");
-        return is_string($allow_op) && str_contains($allow_op, $op);
+        return AntiPhishingDetectionPrepareMethod::allowed(Struct::getpath($this->options, "allow.op"), $op);
     }
 
     private function op_denied(string $op): array
@@ -275,6 +280,7 @@ class AntiPhishingDetectionSDK implements \JsonSerializable
             $no_body = $status === 204 || $status === 304 || (string)$content_length === "0";
 
             $json_data = null;
+            $body_err = null;
             if (!$no_body) {
                 $jf = Struct::getprop($fetched, "json");
                 if (is_callable($jf)) {
@@ -285,14 +291,29 @@ class AntiPhishingDetectionSDK implements \JsonSerializable
                         $json_data = null;
                     }
                 }
+                if (true === Struct::getprop($fetched, "unreadable")) {
+                    $failed = ($status >= 200 && $status < 300) ? null : $ctx->make_error(
+                        "request_status",
+                        "request: {$status}: " . (string)Struct::getprop($fetched, "statusText"));
+                    $sent = $fetchdef["headers"] ?? [];
+                    if (AntiPhishingDetectionFetcher::usesDefault($ctx)) {
+                        $sent = AntiPhishingDetectionFetcher::sentHeaders($sent);
+                    }
+                    $body_err = AntiPhishingDetectionResultBody::unreadable($ctx, $status, $headers,
+                        Struct::getprop($fetched, "body"), $sent, $failed);
+                }
             }
 
-            return [
-                "ok" => $status >= 200 && $status < 300,
+            $out = [
+                "ok" => null === $body_err && $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
             ];
+            if (null !== $body_err) {
+                $out["err"] = ($utility->clean)($ctx, $body_err);
+            }
+            return $out;
         }
 
         return [

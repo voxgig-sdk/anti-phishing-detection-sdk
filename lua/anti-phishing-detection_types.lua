@@ -24,16 +24,7 @@
 ---@field url? string
 
 ---@class DetectionCreateData
----@field details? string
----@field indicators? table
----@field isPhishing? boolean
----@field recommendation? string
----@field resource? string
----@field scanId? string
----@field score? number
----@field threatLevel? string
----@field timestamp? string
----@field url? string
+---@field url string
 
 local M = {}
 

@@ -72,45 +72,9 @@ DetectionListMatch = Struct.new(
 
 # Request payload for Detection#create.
 #
-# @!attribute [rw] details
-#   @return [String, nil]
-#
-# @!attribute [rw] indicators
-#   @return [Array, nil]
-#
-# @!attribute [rw] isPhishing
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] recommendation
-#   @return [String, nil]
-#
-# @!attribute [rw] resource
-#   @return [String, nil]
-#
-# @!attribute [rw] scanId
-#   @return [String, nil]
-#
-# @!attribute [rw] score
-#   @return [Float, nil]
-#
-# @!attribute [rw] threatLevel
-#   @return [String, nil]
-#
-# @!attribute [rw] timestamp
-#   @return [String, nil]
-#
 # @!attribute [rw] url
-#   @return [String, nil]
+#   @return [String]
 DetectionCreateData = Struct.new(
-  :details,
-  :indicators,
-  :isPhishing,
-  :recommendation,
-  :resource,
-  :scanId,
-  :score,
-  :threatLevel,
-  :timestamp,
   :url,
   keyword_init: true
 )

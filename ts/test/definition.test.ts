@@ -17,7 +17,12 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": [
       [
         {
@@ -49,10 +54,28 @@ const PLAN: any[] = [
       "url": "v1"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "url",
       "domain",
       "scanId"
+    ],
+    "queryArgs": [
+      {
+        "name": "domain",
+        "wire": "domain"
+      },
+      {
+        "name": "scan_id",
+        "wire": "scanId"
+      },
+      {
+        "name": "url",
+        "wire": "url"
+      }
     ],
     "auth": [
       [

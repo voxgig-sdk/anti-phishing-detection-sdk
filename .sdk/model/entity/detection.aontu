@@ -91,6 +91,9 @@ main: kit: entity: detection: {
       name: "create"
       points: [
         {
+          bf: [
+            "url"
+          ]
           co: {
             id: "POST /check"
             source: "openapi3"
@@ -98,6 +101,10 @@ main: kit: entity: detection: {
           }
           m: "POST"
           o: "/check"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "check"
@@ -146,12 +153,9 @@ main: kit: entity: detection: {
           }
           m: "GET"
           o: "/scan"
-          q: {
-            exist: [
-              "domain"
-              "scan_id"
-              "url"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

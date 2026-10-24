@@ -338,7 +338,6 @@ initialiser
 [Tt][Ii][Mm][Ee][Ss][Tt][Aa][Mm][Pp]
 [Aa][Nn][Aa][Ll][Yy][Zz][Ee][Dd]
 [Uu][Rr][Ll]
-[Ii][Dd]
 [Uu][Rr][Ll]
 [Ff][Ii][Ss][Hh][Ff][Ii][Ss][Hh]
 [Aa][Nn]

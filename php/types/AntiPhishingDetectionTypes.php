@@ -38,15 +38,6 @@ class DetectionListMatch
 /** Request payload for Detection#create. */
 class DetectionCreateData
 {
-    public ?string $details = null;
-    public ?array $indicators = null;
-    public ?bool $isPhishing = null;
-    public ?string $recommendation = null;
-    public ?string $resource = null;
-    public ?string $scanId = null;
-    public ?float $score = null;
-    public ?string $threatLevel = null;
-    public ?string $timestamp = null;
-    public ?string $url = null;
+    public string $url;
 }
 

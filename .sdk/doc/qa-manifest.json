@@ -3,5 +3,19 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "API key for authentication",
+      "Additional information about the detection",
+      "FishFish is an automated service designed to quickly detect and mitigate phishing threats before they can be exploited for malicious purposes. It provides a streamlined solution for identifying harmful resources efficiently.",
+      "List of phishing indicators detected",
+      "Production server",
+      "Recommended action based on the scan results",
+      "Successful analysis of the URL",
+      "Successful scan operation",
+      "The scanned resource (URL or domain)",
+      "Whether the URL is identified as phishing"
+    ]
+  }
 }

@@ -25,16 +25,7 @@ type DetectionListMatch struct {
 
 // DetectionCreateData is the typed request payload for Detection.CreateTyped.
 type DetectionCreateData struct {
-	Details *string `json:"details,omitempty"`
-	Indicators *[]any `json:"indicators,omitempty"`
-	IsPhishing *bool `json:"isPhishing,omitempty"`
-	Recommendation *string `json:"recommendation,omitempty"`
-	Resource *string `json:"resource,omitempty"`
-	ScanId *string `json:"scanId,omitempty"`
-	Score *float64 `json:"score,omitempty"`
-	ThreatLevel *string `json:"threatLevel,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Url string `json:"url"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

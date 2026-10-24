@@ -15,7 +15,7 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/releases)), or from a
+release tag (`ts/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/anti-phishing-detection-sdk/tags)), or from a
 clone, which carries the compiled `dist/`:
 
 ```bash
@@ -27,7 +27,7 @@ npm install ./anti-phishing-detection-sdk/ts
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key in the `X-API-Key` header.
 
 ### 1. Create a client
 
@@ -49,7 +49,7 @@ resolves to entities, not raw records. Iterate them directly, and call
 const detections = await client.Detection().list()
 
 for (const detection of detections) {
-  console.log(detection)
+  console.log(detection.data())
 }
 ```
 
@@ -58,8 +58,7 @@ for (const detection of detections) {
 ```ts
 // Create — returns the created Detection ENTITY (.data() for the record)
 const created = await client.Detection().create({
-  details: 'example_details',
-  indicators: [],
+  url: 'example_url',
 })
 
 ```
@@ -72,14 +71,15 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 ```ts
 try {
   const detections = await client.Detection().list()
-  console.log(detections)
+  console.log(detections.map((item) => item.data()))
 } catch (err) {
   console.error('list failed:', err)
 }
 ```
 
 The low-level `direct()` method does **not** throw — it returns the
-value or an `Error`, so check the result before using it:
+result envelope. Branch on `ok`; on failure `status` holds the HTTP status
+(for error responses) and `err` holds the error:
 
 ```ts
 const result = await client.direct({
@@ -88,8 +88,8 @@ const result = await client.direct({
   params: { id: 'example_id' },
 })
 
-if (result instanceof Error) {
-  throw result
+if (!result.ok) {
+  console.error('request failed:', result.status, result.err)
 }
 ```
 
@@ -107,9 +107,6 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
-if (result instanceof Error) {
-  throw result
-}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -138,10 +135,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AntiPhishingDetectionSDK.test()
 
-const detection = await client.Detection().list()
-// detection is the entity, populated with mock response data
-// — call detection.data() for the record itself
-console.log(detection)
+const detections = await client.Detection().list()
+// detections is an array of Detection entities, one per mock record
+console.log(detections.map((detection) => detection.data()))
 ```
 
 You can also use the instance method:
@@ -260,8 +256,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria, one per record. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity, and return it. |
 | `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
 | `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
@@ -270,8 +266,8 @@ All entities share the same interface.
 
 #### Return values
 
-Entity operations resolve to the entity data directly — there is no
-result envelope:
+Entity operations resolve to the entity itself — there is no result
+envelope, and an entity's `data()` reads its record:
 
 - `create` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
@@ -371,6 +367,7 @@ const detections = await client.Detection().list()
 
 ```ts
 const detection = await client.Detection().create({
+  url: 'example_url',
 })
 ```
 
